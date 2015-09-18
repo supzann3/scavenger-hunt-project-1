@@ -15,3 +15,29 @@
 //= require bootstrap
 //= require_tree ../../../vendor/assets/javascripts/.
 //= require_tree .
+
+$(document).ready(function(){
+    $("#submit").click(function(e){
+        e.preventDefault
+        getLocation()
+    });
+});
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(sendPosition);
+    } else {
+        $("#test").html("Geolocation is not supported by this browser.");
+    }
+}
+function sendPosition(position) {
+    var latitude = position.coords.latitude
+    var longitude = position.coords.longitude;
+    $('#test').append("<div>Latitude:  " + latitude + "</div")
+    $('#test').append("<div>Longitude:  " + longitude + "</div")
+    $.ajax({
+      type: "POST",
+      url: "/clues",
+      data: {latitude: latitude, longitude: longitude},
+    })
+}
