@@ -65,3 +65,5 @@ end
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'devise'
 gem 'airbrake'
+
+ruby "2.2.3"
