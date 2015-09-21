@@ -1,0 +1,9 @@
+<div id="question">
+  <%= @clue.text %>
+</div>
+<%= form_tag(validate_answer_path, method: "post") do %>
+  <%= text_field_tag(:answer) %>
+  <%= hidden_field_tag "clue_id", @clue.id %>
+  <%= hidden_field_tag "current_list_id", @clue.list.id %>
+  <%= submit_tag("Your Answer", id: "answer-button", class: "btn btn-small btn-success") %>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150918175132) do
+ActiveRecord::Schema.define(version: 20150921150451) do
 
   create_table "clues", force: :cascade do |t|
     t.integer  "list_id"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150918175132) do
     t.string   "hint"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "answer"
   end
 
   create_table "game_users", force: :cascade do |t|

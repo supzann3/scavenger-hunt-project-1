@@ -1,0 +1,10 @@
+<div>
+  <% @lists.each do |list| %>
+    <%= list.name %>
+    <!-- <button type="button" id="play">
+      Play
+    </button> -->
+  <%= button_to "Woo!", clues_path, class: "btn btn-small btn-success" %>
+  <% end %>
+
+</div>

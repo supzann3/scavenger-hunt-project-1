@@ -17,9 +17,9 @@
 //= require_tree .
 
 $(document).ready(function(){
-    $("#submit").click(function(e){
-        e.preventDefault
-        getLocation()
+    $("#answer-button").click(function(e){
+        e.preventDefault();
+        getLocation();
     });
 });
 
@@ -31,13 +31,17 @@ function getLocation() {
     }
 }
 function sendPosition(position) {
-    var latitude = position.coords.latitude
+
+    var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
     $('#test').append("<div>Latitude:  " + latitude + "</div")
     $('#test').append("<div>Longitude:  " + longitude + "</div")
     $.ajax({
       type: "POST",
-      url: "/clues",
-      data: {latitude: latitude, longitude: longitude},
-    })
+      url: "/lists/:list_id/clues/:id",
+      data: {latitude: latitude, longitude: longitude, answer: $("#answer").val(), clue_id: $("#clue_id").val(), current_list_id: $("#current_list_id").val()}
+  }).done(function(response){
+    // debugger
+    $('#clue-form').html(response)
+  })
 }
