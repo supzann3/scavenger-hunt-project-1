@@ -40,14 +40,11 @@ class CluesController < ApplicationController
         @clue = @clue.next_clue
         redirect_to "/lists/#{@clue.list.id}/clues/#{@clue.id}"
       end
-      #must add condition so that it goes to winner page if there are no clues left
     else
       flash[:alert] = "Wrong answer, try again!"
       redirect_to "/lists/#{@clue.list.id}/clues/#{@clue.id}"
     end
   end
-
-
 
   private
 
