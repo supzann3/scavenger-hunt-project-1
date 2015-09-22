@@ -19,8 +19,7 @@ class CluesController < ApplicationController
       })
     @list = List.find(params[:list_id])
     respond_to do |format|
-      format.js { }
-      format.html {render partial: "new", layout: false}
+      format.js
     end
   end
 
