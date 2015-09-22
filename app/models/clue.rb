@@ -1,3 +1,4 @@
+
 class Clue < ActiveRecord::Base
   belongs_to :list
   belongs_to :game
@@ -7,14 +8,22 @@ class Clue < ActiveRecord::Base
     !!(answer_valid?(user_answer) && location_valid?(user_location))
   end
 
+  def location_valid?(user_location=nil)
+    clue_location = [latitude, longitude]
+    distance = Geocoder::Calculations.distance_between(user_location, clue_location) * 5280
+    if distance <= 65 
+      return true
+    else
+      return false
+    end
+  end
+
   private
   def answer_valid?(user_answer)
     !!(self.answer == user_answer)
   end
 
-  def location_valid?(user_location=nil)
-    true #CHANGE ME!!
-  end
+
 
 
 end
