@@ -11,6 +11,7 @@ class Clue < ActiveRecord::Base
     self == self.list.clues.last ? true : false
   end
 
+
   def submission_valid?(user_answer, user_location=nil)
     !!(answer_valid?(user_answer) && location_valid?(user_location))
   end

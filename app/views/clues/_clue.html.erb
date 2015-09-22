@@ -7,3 +7,14 @@
   <%= hidden_field_tag "latitude" %>
   <%= submit_tag("Your Answer", id: "answer-button", class: "btn btn-small btn-success") %>
 <% end %>
+<div class="skip-button">
+  <% if @clue.last_clue? %>
+  <p>
+    This is your last clue
+  </p>
+    <%= button_to "Skip", root_path, method:"get", class: "btn btn-lg btn-success" %>
+  <% else %>
+    <% @clue=@clue.next_clue %>
+    <%= button_to "Skip", "/lists/#{@clue.list.id}/clues/#{@clue.id}", method:"get", class: "btn btn-lg btn-success" %>
+  <% end %>
+</div>
