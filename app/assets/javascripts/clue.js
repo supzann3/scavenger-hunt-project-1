@@ -6,7 +6,7 @@ $(document).ready(function(){
           $("#longitude").val(location.coords.longitude);
           $("#latitude").val(location.coords.latitude);
           // debugger
-          $('form').unbind("submit").submit()
+          $('form').unbind("submit").submit();
         });
 
     });
@@ -25,7 +25,7 @@ $(document).ready(function(){
 });
 
 function getLocation(callback) {
-    callback
+    // callback
     if (navigator.geolocation) {
        navigator.geolocation.getCurrentPosition(callback);
     } else {
