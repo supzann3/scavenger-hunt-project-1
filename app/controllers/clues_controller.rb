@@ -24,27 +24,30 @@ class CluesController < ApplicationController
   end
 
   def show
+    # @list=List.find(params[:list_id])
     @clue = Clue.find(params[:id])
   end
 
   def validate
-    @clue = Clue.find(params[:clue_id])
+    @clue = Clue.find(params[:id])
     user_answer = params[:answer]
     user_location = [params[:latitude], params[:longitude]]
     if @clue.submission_valid?(user_answer, user_location)
-
-      @clue = Clue.find(params[:clue_id].to_i + 1)
-      respond_to do |format|
-        format.js
+      if @clue.last_clue?
+        flash[:notice] = "You win! Play again?"
+        redirect_to root_path
+      else
+        @clue = @clue.next_clue
+        redirect_to "/lists/#{@clue.list.id}/clues/#{@clue.id}"
       end
+      #must add condition so that it goes to winner page if there are no clues left
+    else
+      flash[:alert] = "Wrong answer, try again!"
+      redirect_to "/lists/#{@clue.list.id}/clues/#{@clue.id}"
     end
-    # render @clue
-    # "/lists/#{params[:current_list_id].to_i}/clues/#{params[:clue_id].to_i + 1}"
-    # redirect_to root_path
   end
-  # def answer
-  #   # binding.pry
-  # end
+
+
 
   private
 
