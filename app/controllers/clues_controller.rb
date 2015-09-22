@@ -4,6 +4,26 @@ class CluesController < ApplicationController
   def index
   end
 
+  def new
+    @list = List.find(params[:list_id])
+    @clue = Clue.new
+  end
+
+  def create
+    @clue = Clue.create({
+      latitude: params["latitude"],
+      longitude: params["longitude"],
+      text: params["text"],
+      answer: params["answer"],
+      list_id: params["list_id"]
+      })
+    @list = List.find(params[:list_id])
+    respond_to do |format|
+      format.js { }
+      format.html {render partial: "new", layout: false}
+    end
+  end
+
   def show
     @clue = Clue.find(params[:id])
   end
@@ -16,9 +36,7 @@ class CluesController < ApplicationController
 
       @clue = Clue.find(params[:clue_id].to_i + 1)
       respond_to do |format|
-        # binding.pry
-        # format.html
-        format.html {render :layout => false}
+        format.html {render layout: false}
       end
     end
     # render @clue
@@ -28,5 +46,9 @@ class CluesController < ApplicationController
   # def answer
   #   # binding.pry
   # end
+
+  private
+
+
 
 end
