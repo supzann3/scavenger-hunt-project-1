@@ -1,6 +1,5 @@
 $(document).ready(function(){
     $("#answer-button").click(function(e){
-      alert("asdfasdfasdfasdf");
         e.preventDefault();
         getLocation();
     });

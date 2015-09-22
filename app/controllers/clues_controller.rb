@@ -35,7 +35,7 @@ class CluesController < ApplicationController
 
       @clue = Clue.find(params[:clue_id].to_i + 1)
       respond_to do |format|
-        format.html {render layout: false}
+        format.js
       end
     end
     # render @clue
