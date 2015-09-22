@@ -1,15 +1,22 @@
 $(document).ready(function(){
-    $("#answer-button").click(function(e){
+    $("form").submit(function(e){
         e.preventDefault();
-        getLocation();
+        getLocation(function(location){
+          // debugger
+          $("#longitude").val(location.coords.longitude);
+          $("#latitude").val(location.coords.latitude);
+          // debugger
+          $('form').unbind("submit").submit()
+        });
+
     });
 });
 
 $(document).ready(function(){
-    $("#answer-button").click(function(e){
-        e.preventDefault();
-        getLocation();
-    });
+    // $("#answer-button").click(function(e){
+    //     e.preventDefault();
+    //     getLocation();
+    // });
 
     $("#new-clue-button").click(function(e){
         e.preventDefault();
@@ -17,9 +24,10 @@ $(document).ready(function(){
     });
 });
 
-function getLocation() {
+function getLocation(callback) {
+    callback
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(sendPosition);
+       navigator.geolocation.getCurrentPosition(callback);
     } else {
         $("#test").html("Geolocation is not supported by this browser.");
     }
@@ -43,8 +51,9 @@ function sendPosition(position) {
       type: "POST",
       url: "/lists/:list_id/clues/:id",
       data: {latitude: latitude, longitude: longitude, answer: $("#answer").val(), clue_id: $("#clue_id").val(), current_list_id: $("#current_list_id").val()}
-  }).done(function(response){
-    // debugger
+  })
+  .done(function(response){
+    debugger
     $('#clue-form').html(response);
   });
 }

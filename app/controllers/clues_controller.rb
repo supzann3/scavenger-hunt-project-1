@@ -32,11 +32,10 @@ class CluesController < ApplicationController
     user_answer = params[:answer]
     user_location = [params[:latitude], params[:longitude]]
     if @clue.submission_valid?(user_answer, user_location)
-
-      @clue = Clue.find(params[:clue_id].to_i + 1)
-      respond_to do |format|
-        format.js
-      end
+      @clue = Clue.find(params[:clue_id].to_i + 1) # <--must rewrite this to deal with non sequential clue numbers
+        #must add condition so that it goes to winner page if there are no clues left
+        redirect_to "/lists/#{@clue.list.id}/clues/#{@clue.id}"
+        #must add else to deal with invalid answers
     end
     # render @clue
     # "/lists/#{params[:current_list_id].to_i}/clues/#{params[:clue_id].to_i + 1}"
