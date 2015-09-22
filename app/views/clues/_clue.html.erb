@@ -1,7 +1,7 @@
 <div id="question">
   <%= @clue.text %>
 </div>
-<%= form_tag(validate_answer_path, method: "post") do %>
+<%= form_tag(validate_answer_path, id: "clue-form", method: "post") do %>
   <%= text_field_tag(:answer) %>
   <%= hidden_field_tag "longitude" %>
   <%= hidden_field_tag "latitude" %>

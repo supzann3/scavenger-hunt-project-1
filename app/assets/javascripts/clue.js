@@ -1,15 +1,14 @@
 $(document).ready(function(){
-    $("form").submit(function(e){
-        e.preventDefault();
-        getLocation(function(location){
-          // debugger
-          $("#longitude").val(location.coords.longitude);
-          $("#latitude").val(location.coords.latitude);
-          // debugger
-          $('form').unbind("submit").submit();
-        });
-
+  $("form").submit(function(e){
+    e.preventDefault();
+    getLocation(function(location){
+      // debugger
+      $("#longitude").val(location.coords.longitude);
+      $("#latitude").val(location.coords.latitude);
+      // debugger
+      $('form').unbind("submit").submit();
     });
+  });
 });
 
 $(document).ready(function(){
