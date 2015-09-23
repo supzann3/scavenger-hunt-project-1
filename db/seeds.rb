@@ -53,6 +53,7 @@ Clue.create(list_id: 2, latitude:40.7162159,longitude:-73.9983124, text: "Best R
 Clue.create(list_id: 2, latitude:40.7165432,longitude:-73.999068, text: "Sweet Egg Tarts' Bakery", answer:"Lung Moon Bakery")
 Clue.create(list_id: 2, latitude:40.7165432,longitude:-73.999068, text: "First Bubble Tea in Chinatown", answer:"Ten Ren’s Tea Time")
 
+
 Clue.create(
   list_id: 3,
   text: "Located on the Upper West Side this is one of the largest museums in the world, and comprises 27 interconnected buildings, in addition to a planetarium and a library.",

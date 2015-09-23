@@ -1,6 +1,9 @@
-<%= form_tag(list_clues_path, method: "post") do %>
+
+<%= form_tag(list_clues_path, method: "post", id:"clue-answer-form") do %>
   <%= text_area_tag(:text, nil, placeholder: 'Your Question') %><br>
   <%= text_field_tag(:answer, nil, placeholder: 'Enter Answer') %><br>
   <%= hidden_field_tag "current_list_id", @list.id %>
-  <%= submit_tag("Submit Clue", id: "new-clue-button", class: "btn btn-small btn-success") %>
+  <%= hidden_field_tag "longitude" %>
+  <%= hidden_field_tag "latitude" %>
+  <%= submit_tag("Submit Clue", class: "btn btn-small btn-success") %>
 <% end %>
