@@ -1,20 +1,24 @@
 <div id="question">
   <%= @clue.text %>
 </div>
-<%= form_tag(validate_answer_path, id: "clue-form", method: "post") do %>
-  <%= text_field_tag(:answer) %>
-  <%= hidden_field_tag "longitude" %>
-  <%= hidden_field_tag "latitude" %>
-  <%= submit_tag("Your Answer", id: "answer-button", class: "btn btn-small btn-success") %>
-<% end %>
+
+<div>
+  <%= form_tag(validate_answer_path, id: "clue-form", method: "post") do %>
+    <%= text_field_tag(:answer) %>
+    <%= hidden_field_tag "longitude" %>
+    <%= hidden_field_tag "latitude" %>
+    <%= submit_tag("Your Answer", id: "answer-button", class: "btn btn-small btn-success") %>
+  <% end %>
+</div>
+
 <div class="skip-button">
   <% if @clue.last_clue? %>
   <p>
     This is your last clue
   </p>
-    <%= button_to "Skip", root_path, method:"get", class: "btn btn-lg btn-success" %>
+    <%= link_to "Skip", root_path, method:"get", class: "btn btn-lg btn-success" %>
   <% else %>
-    <% @clue=@clue.next_clue %>
-    <%= button_to "Skip", "/lists/#{@clue.list.id}/clues/#{@clue.id}", method:"get", class: "btn btn-lg btn-success" %>
+    <% @clue = @clue.next_clue %>
+    <%= link_to "Skip", "/lists/#{@clue.list.id}/clues/#{@clue.id}", method:"get", class: "btn btn-lg btn-success" %>
   <% end %>
 </div>

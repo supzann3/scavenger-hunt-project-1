@@ -1,6 +1,7 @@
 $(document).ready(function(){
   $("form").submit(function(e){
     e.preventDefault();
+    debugger
     getLocation(function(location){
       // debugger
       $("#longitude").val(location.coords.longitude);
