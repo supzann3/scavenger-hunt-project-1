@@ -2,7 +2,7 @@
   <% @lists.each do |list| %>
     <% if list.clues.length>0 %>
     <%= list.name %>
-    <%= button_to "Play", "/lists/#{list.id}/clues/#{list.clues.first.id}", method:"get", class: "btn btn-lg btn-success" %>
+    <%= link_to "Play", "/lists/#{list.id}/clues/#{list.clues.first.id}", method:"get", class: "btn btn-lg btn-success" %>
     <% end %>
   <% end %>
 
