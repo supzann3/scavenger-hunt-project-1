@@ -1,11 +1,9 @@
 class ListsController < ApplicationController
   def index
     @lists = List.all
-    # @lists.each do|list|
-    #
-    #   @list_id=list.id
-    #   @id=list.clues.first.id
-    # end
+    if !!(current_user.clue_id)
+      redirect_to "/lists/#{current_user.clue.list_id}/clues/#{current_user.clue_id}"
+    end
   end
 
   def show

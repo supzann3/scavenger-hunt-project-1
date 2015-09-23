@@ -27,16 +27,22 @@ class CluesController < ApplicationController
     # @list=List.find(params[:list_id])
     @clue = Clue.find(params[:id])
     current_user.clue_id = @clue.id
+    current_user.save
   end
 
   def validate
     @clue = Clue.find(params[:id])
     user_answer = params[:answer]
     user_location = [params[:latitude], params[:longitude]]
-    if @clue.submission_valid?(user_answer, user_location)
+    if params[:reset_clue_id] == "true"
+      current_user.clue_id = nil
+      current_user.save
+      redirect_to root_path
+    elsif @clue.submission_valid?(user_answer, user_location)
       if @clue.last_clue?
         flash[:notice] = "You win! Play again?"
         current_user.clue_id = nil
+        current_user.save
         redirect_to root_path
       else
         @clue = @clue.next_clue

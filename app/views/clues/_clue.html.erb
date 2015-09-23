@@ -13,10 +13,11 @@
 
 <div class="skip-button">
   <% if @clue.last_clue? %>
-  <p>
-    This is your last clue
-  </p>
-    <%= link_to "Skip", root_path, method:"get", class: "btn btn-lg btn-success" %>
+    <p>This is your last clue.</p>
+    <%= form_tag(validate_answer_path, id: "skip-form", method: "post") do %>
+      <%= hidden_field_tag "reset_clue_id", "true" %>
+      <%= submit_tag("Skip", id: "skip-last-clue", class: "btn btn-small btn-success") %>
+    <% end %>
   <% else %>
     <% @clue = @clue.next_clue %>
     <%= link_to "Skip", "/lists/#{@clue.list.id}/clues/#{@clue.id}", method:"get", class: "btn btn-lg btn-success" %>
