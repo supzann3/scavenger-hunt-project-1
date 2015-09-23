@@ -35,13 +35,19 @@ class CluesController < ApplicationController
     if @clue.submission_valid?(user_answer, user_location)
       if @clue.last_clue?
         flash[:notice] = "You win! Play again?"
+        current_user.clue_id = nil
         redirect_to root_path
       else
         @clue = @clue.next_clue
+        current_user.clue_id = @clue.id
+        binding.pry
         redirect_to "/lists/#{@clue.list.id}/clues/#{@clue.id}"
       end
     else
       flash[:alert] = "Wrong answer, try again!"
+      @clue = Clue.find(params[:id])
+      current_user.clue_id = @clue.id
+      binding.pry
       redirect_to "/lists/#{@clue.list.id}/clues/#{@clue.id}"
     end
   end

@@ -2,6 +2,7 @@
 class Clue < ActiveRecord::Base
   belongs_to :list
   belongs_to :game
+  has_many :users
 
   def next_clue
     self.list.clues[self.list.clues.index(self) + 1]
@@ -10,7 +11,6 @@ class Clue < ActiveRecord::Base
   def last_clue?
     self == self.list.clues.last ? true : false
   end
-
 
   def submission_valid?(user_answer, user_location=nil)
     !!(answer_valid?(user_answer) && location_valid?(user_location))
@@ -27,8 +27,5 @@ class Clue < ActiveRecord::Base
   def answer_valid?(user_answer)
     !!(self.answer == user_answer)
   end
-
-
-
 
 end
