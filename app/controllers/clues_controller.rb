@@ -26,6 +26,8 @@ class CluesController < ApplicationController
   def show
     # @list=List.find(params[:list_id])
     @clue = Clue.find(params[:id])
+    current_user.clue_id = @clue.id
+    binding.pry
   end
 
   def validate
@@ -39,15 +41,11 @@ class CluesController < ApplicationController
         redirect_to root_path
       else
         @clue = @clue.next_clue
-        current_user.clue_id = @clue.id
-        binding.pry
         redirect_to "/lists/#{@clue.list.id}/clues/#{@clue.id}"
       end
     else
       flash[:alert] = "Wrong answer, try again!"
       @clue = Clue.find(params[:id])
-      current_user.clue_id = @clue.id
-      binding.pry
       redirect_to "/lists/#{@clue.list.id}/clues/#{@clue.id}"
     end
   end
