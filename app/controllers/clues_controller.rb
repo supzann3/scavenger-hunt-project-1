@@ -27,7 +27,6 @@ class CluesController < ApplicationController
     # @list=List.find(params[:list_id])
     @clue = Clue.find(params[:id])
     current_user.clue_id = @clue.id
-    binding.pry
   end
 
   def validate
