@@ -18,9 +18,7 @@ class CluesController < ApplicationController
       list_id: params["list_id"]
       })
     @list = List.find(params[:list_id])
-    respond_to do |format|
-      format.js
-    end
+    redirect_to new_list_clue_path
   end
 
   def show
