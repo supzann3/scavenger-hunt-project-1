@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20150923171526) do
-=======
 ActiveRecord::Schema.define(version: 20150923172055) do
->>>>>>> 80086116e11e442032ae9ee9c0968faa7c81754a
 
   create_table "clues", force: :cascade do |t|
     t.integer  "list_id"

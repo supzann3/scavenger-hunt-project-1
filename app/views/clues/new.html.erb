@@ -10,9 +10,12 @@ Name: <%=@list.name %>
 <div class="clue-list">
   <% if @list.clues.length>0 %>
   <%= render partial:"all_clues" %>
-  <%= link_to "Finish", "/lists/#{@list}/clues", method:"get", class: "btn btn-lg btn-success" %>
+  <div id="new-clue-submit" >
+    <%= link_to "I'm Done!", "/lists/#{@list}/clues", method:"get", class: "btn btn-small btn-success" %>
+  </div>
   <% end %>
 </div>
+<p>&nbsp;</p>
 
 <div id="new-clue-form">
   <%= render partial: "new" %>
