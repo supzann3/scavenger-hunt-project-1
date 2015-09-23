@@ -1,13 +1,14 @@
 class ListsController < ApplicationController
   def index
     @lists = List.all
-    # @lists.each do|list|
-    #
-    #   @list_id=list.id
-    #   @id=list.clues.first.id
-    # end
   end
-
+  def new
+    @list=List.new
+  end
+  def create
+    @list=List.create(name: params[:name], user_id: current_user.id, location: params[:location])
+    redirect_to "/lists/#{@list.id}/clues/new"
+  end
   def show
     @list=List.find(params[:id])
   end

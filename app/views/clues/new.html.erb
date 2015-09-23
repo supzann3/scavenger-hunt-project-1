@@ -1,3 +1,12 @@
+<div class="names-locations">
+<p>
+Name: <%=@list.name %>
+</p>
+<p>
+  Location: <%=@list.location %>
+</p>
+</div>
+
 <div class="clue-list">
   <% if @list.clues.length>0 %>
   <%= render partial:"all_clues" %>

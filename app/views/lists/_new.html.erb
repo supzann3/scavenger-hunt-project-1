@@ -1,0 +1,10 @@
+
+<%= form_tag(lists_path, method: "post", id:"new-list-form") do %>
+  <%= text_field_tag(:name, nil, placeholder: 'List Name') %><br>
+  <p>&nbsp;</p>
+  <%= text_field_tag(:location, nil, placeholder: 'Your Location') %><br>
+  <p>&nbsp;</p>
+  <%= hidden_field_tag "longitude" %>
+  <%= hidden_field_tag "latitude" %>
+  <%= submit_tag("Submit Clue", class: "btn btn-small btn-success") %>
+<% end %>
