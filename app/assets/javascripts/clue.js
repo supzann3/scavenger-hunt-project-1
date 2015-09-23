@@ -1,13 +1,13 @@
 $(document).ready(function(){
-  $("form").submit(function(e){
+  $("#clue-answer-form").submit(function(e){
     e.preventDefault();
-    debugger
+
     getLocation(function(location){
       // debugger
       $("#longitude").val(location.coords.longitude);
       $("#latitude").val(location.coords.latitude);
       // debugger
-      $('form').unbind("submit").submit();
+      $('#clue-answer-form').unbind("submit").submit();
     });
   });
 });
@@ -41,31 +41,31 @@ function getCoords() {
     }
 }
 
-function sendPosition(position) {
-
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
-    $('#test').append("<div>Latitude:  " + latitude + "</div");
-    $('#test').append("<div>Longitude:  " + longitude + "</div");
-    $.ajax({
-      type: "POST",
-      url: "/lists/:list_id/clues/:id",
-      data: {latitude: latitude, longitude: longitude, answer: $("#answer").val(), clue_id: $("#clue_id").val(), current_list_id: $("#current_list_id").val()}
-  })
-  .done(function(response){
-    $('#clue-form').html(response);
-  });
-}
-
-function sendCluePosition(position) {
-
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
-    $.ajax({
-      type: "POST",
-      url: "/lists/" + $("#current_list_id").val() + "/clues",
-      data: {latitude: latitude, longitude: longitude, text: $("#text").val(), answer: $("#answer").val(), current_list_id: $("#current_list_id").val()}
-  }).done(function(response){
-    $('#new-clue-form').html(response);
-  });
-}
+// function sendPosition(position) {
+//
+//     var latitude = position.coords.latitude;
+//     var longitude = position.coords.longitude;
+//     $('#test').append("<div>Latitude:  " + latitude + "</div");
+//     $('#test').append("<div>Longitude:  " + longitude + "</div");
+//     $.ajax({
+//       type: "POST",
+//       url: "/lists/:list_id/clues/:id",
+//       data: {latitude: latitude, longitude: longitude, answer: $("#answer").val(), clue_id: $("#clue_id").val(), current_list_id: $("#current_list_id").val()}
+//   })
+//   .done(function(response){
+//     $('#clue-form').html(response);
+//   });
+// }
+//
+// function sendCluePosition(position) {
+//
+//     var latitude = position.coords.latitude;
+//     var longitude = position.coords.longitude;
+//     $.ajax({
+//       type: "POST",
+//       url: "/lists/" + $("#current_list_id").val() + "/clues",
+//       data: {latitude: latitude, longitude: longitude, text: $("#text").val(), answer: $("#answer").val(), current_list_id: $("#current_list_id").val()}
+//   }).done(function(response){
+//     $('#new-clue-form').html(response);
+//   });
+// }
