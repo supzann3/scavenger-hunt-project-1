@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   def index
     @lists = List.all
     if !!(current_user.clue)
-      redirect_to "/lists/#{current_user.clue.list_id}/clues/#{current_user.current_clue_id}"
+      redirect_to "/lists/#{current_user.clue.list_id}/clues/#{current_user.clue_id}"
     end
   end
 
