@@ -1,6 +1,9 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    RubyInline (3.12.4)
+      ZenTest (~> 4.3)
+    ZenTest (4.11.0)
     actionmailer (4.2.0)
       actionpack (= 4.2.0)
       actionview (= 4.2.0)
@@ -89,6 +92,8 @@ GEM
       railties (>= 3.0.0)
     ffi (1.9.10)
     formatador (0.2.5)
+    fuzzy-string-match (0.9.7)
+      RubyInline (>= 3.8.6)
     geocoder (1.2.11)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -269,6 +274,7 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_girl_rails
+  fuzzy-string-match
   geocoder
   google-analytics-rails
   guard-rspec

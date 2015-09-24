@@ -21,3 +21,4 @@ function getLocation(callback) {
         $("#test").html("Geolocation is not supported by this browser.");
     }
 }
+ 
