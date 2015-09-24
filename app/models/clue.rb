@@ -1,4 +1,3 @@
-
 class Clue < ActiveRecord::Base
   belongs_to :list
   belongs_to :game
@@ -23,9 +22,13 @@ class Clue < ActiveRecord::Base
     # distance <= 65 ? true : false
   end
 
-  private
   def answer_valid?(user_answer)
-    !!(self.answer == user_answer)
+    word_match = FuzzyStringMatch::JaroWinkler.create( :pure )
+    if word_match.getDistance("#{self.answer}".downcase, "#{user_answer}".downcase) > 0.55
+      return true
+    else
+      return false
+    end
   end
 
 end
