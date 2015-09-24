@@ -19,6 +19,11 @@ $(document).ready(function(){
     createClue()
   });
 
+  $('.delete').click(function(e){
+    e.preventDefault();
+    deleteClue().bind(this)
+  });
+
 });
 
 function getLocation(callback) {
@@ -74,5 +79,25 @@ function createClue(){
     }
   });
 
+}
+
+function deleteClue(){
+  debugger
+  $.ajax({ 
+    // /lists/:list_id/clues/:id(.:format)
+    url: "/lists/" + listId + "/clues",
+    type: 'POST',
+    data: {
+      answer: $('#answer').val(),
+      text: $('#text').val(),
+      latitude: $('#latitude').val(),
+      longitude: $('#longitude').val(),
+      list_id: $('#list_id').val()
+      },
+    success: function(message){
+      addClueToList()
+      $('form').trigger('reset')
+    }
+  });
 }
 //validations for address
