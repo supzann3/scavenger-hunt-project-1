@@ -21,7 +21,20 @@ $(document).ready(function(){
 
   $('.delete').click(function(e){
     e.preventDefault();
-    deleteClue().bind(this)
+    // $(this).parent().parent()
+    var clueId = $(this).parent().parent().children(".clue-id").text()
+    var listId = $(this).parent().parent().children(".list-id").text()
+    
+    deleteClue(clueId, listId)
+  });
+
+  $('.edit').click(function(e){
+    e.preventDefault();
+    // $(this).parent().parent()
+    var clueId = $(this).parent().parent().children(".clue-id").text()
+    
+    
+    insertEditForm(clueId, listId)
   });
 
 });
@@ -81,23 +94,33 @@ function createClue(){
 
 }
 
-function deleteClue(){
-  debugger
+function deleteClue(clueId, listId){
+  
   $.ajax({ 
     // /lists/:list_id/clues/:id(.:format)
-    url: "/lists/" + listId + "/clues",
-    type: 'POST',
+    url: "/lists/" + listId + "/clues/" + clueId,
+    type: 'DELETE',
     data: {
-      answer: $('#answer').val(),
-      text: $('#text').val(),
-      latitude: $('#latitude').val(),
-      longitude: $('#longitude').val(),
-      list_id: $('#list_id').val()
+      clue_id: clueId
       },
     success: function(message){
-      addClueToList()
-      $('form').trigger('reset')
+      $( "#clue-" + clueId ).remove();
     }
   });
 }
-//validations for address
+
+// function editClue(clueId, listId){
+  
+//   $.ajax({ 
+//     // /lists/:list_id/clues/:id(.:format)
+//     url: "/lists/" + listId + "/clues/" + clueId,
+//     type: 'DELETE',
+//     data: {
+//       clue_id: clueId
+//       },
+//     success: function(message){
+//       $( "#clue-" + clueId ).remove();
+//     }
+//   });
+// }
+// //validations for address

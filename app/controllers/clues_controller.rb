@@ -24,11 +24,16 @@ class CluesController < ApplicationController
       format.json { render json: @clue.id }
     end
 
-    # if params[:type] == "on-the-go"
-    #   redirect_to new_list_clue_path
-    # else
-    #   redirect_to new_from_address_path
-    # end
+  end
+
+  def destroy
+    
+    @clue = Clue.find(params[:id])
+    @clue.destroy
+
+    respond_to do |format|
+      format.json { render json: @clue.id }
+    end
   end
 
   def show

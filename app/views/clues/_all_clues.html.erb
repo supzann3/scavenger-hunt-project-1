@@ -1,14 +1,25 @@
 <% @list.clues.each do |clue| %>
   <div class= "clue-wrapper" id= <%="clue-#{clue.id}" %>>
+
     <div class="hidden clue-id"><%= "#{clue.id}" %></div>
     <div class="hidden list-id"><%= "#{clue.list.id}" %></div>
     <li><%= clue.text %><br>
       <%= clue.answer %></li>
-        <div class= "icons">
-          <div class= "edit"><%= image_tag("edit.png")%></div>
-          <div class= "delete"><%= image_tag("delete.png")%>
-          </div>
+      <div class= "icons">
+        <div class= "edit"><%= image_tag("edit.png")%></div>
+        <div class= "delete"><%= image_tag("delete.png")%>
         </div>
-  </div>
+      </div>
+      <div class= "hidden edit_clue">
+        <%= form_tag(list_clues_path, method: "post", id:"edit-clue-form") do %>
+          <%= text_area_tag(:text, nil, placeholder: 'Your Question') %><br>
+          <%= text_field_tag(:answer, nil, placeholder: 'Enter Answer') %><br>
+          <%= submit_tag("Submit Clue", class: "btn btn-small btn-success") %>
+        <% end %>
+      </div>
+    </div>
+
+
+
   <% end %>
 
