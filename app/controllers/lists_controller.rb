@@ -11,7 +11,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list=List.create(name: params[:name], user_id: current_user.id, location: params[:location])
+    @list=List.create(name: params[:name], user_id: current_user.id, location: params[:location], creator: current_user.id)
     redirect_to "/lists/#{@list.id}/clues/new"
   end
 
