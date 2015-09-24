@@ -1,0 +1,16 @@
+<div id="all-clues">
+  <% @list.clues.each do |clue| %>
+    <div class= "clue-wrapper" id= <%="clue-#{clue.id}" %>>
+      <div class="clue-info">
+        <div class="hidden clue-id"><%= "#{clue.id}" %></div>
+        <div class="hidden list-id"><%= "#{clue.list.id}" %></div>
+        <div class='clue-text'><%= clue.text %></div>
+        <div class='clue-answer'><%= clue.answer %></div>
+      </div>
+      <div class= "icons">
+        <div class= "edit"><%= image_tag("edit.png")%></div>
+        <div class= "delete"><%= image_tag("delete.png")%></div>
+      </div>
+    </div>
+  <% end %>
+</div>

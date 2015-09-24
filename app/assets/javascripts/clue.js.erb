@@ -66,16 +66,36 @@ function fetchAddressLocation(callback){
       success: function(message){
         $("#longitude").val(message['latitude']);
         $("#latitude").val(message['longitude']);
-        createClue();
+        createClue(message);
       }
     });
   }
 
-function addClueToList(){
-  $('#ol-clues').append(
-    "<li>" + $('#text').val() + "<br>" +
-    $('#answer').val() + "</li>"
-  );
+function addClueToList(clueId, listId){
+  $('#all-clues').append("<div class= 'clue-wrapper' id='clue-'" + clueId + ">" +
+    "<div class='clue-info'>" +
+      "<div class='hidden clue-id'>" +
+        clueId +
+      "</div>" +
+      "<div class='hidden list-id'>" +
+        listId +
+      "</div>" +
+      "<div class='clue-text'>" +
+        $('#text').val() +
+      "</div>" +
+      "<div class='clue-answer'>" +
+        $('#answer').val() +
+      "</div>" +
+    "</div>" +
+    "<div class= 'icons'>" +
+      "<div class= 'edit'>" +
+        '<%= image_tag("edit.png")%>' +
+      "</div>" +
+      "<div class='delete'>" +
+        '<%= image_tag("delete.png")%>' +
+      "</div>" +
+    "</div>" +
+  "</div>")
 }
 
 function createClue(){
@@ -91,7 +111,7 @@ function createClue(){
       list_id: $('#list_id').val()
       },
     success: function(message){
-      addClueToList();
+      addClueToList(message, listId);
       $('form').trigger('reset');
     }
   });

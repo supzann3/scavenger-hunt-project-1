@@ -18,18 +18,4 @@ Name: <%=@list.name %>
   <% end %>
 </div>
 
-<%= form_tag(list_clues_path, method: "post", id:"new-from-address") do %>
-  <%= text_area_tag(:text, nil, placeholder: 'Enter your clue here.', required: true) %><br>
-  <p>&nbsp;</p>
-  <%= text_field_tag(:answer, nil, placeholder: 'Answer', required: true) %><br>
-  <p>&nbsp;</p>
-  <%= text_field_tag(:street, nil, placeholder: 'Street Address', required: true) %><br>
-  <%= text_field_tag(:city, nil, placeholder: 'City', required: true) %><br>
-  <%= text_field_tag(:state, nil, placeholder: 'State', required: true, pattern: '[a-zA-z]{2,}') %><br>
-  <%= text_field_tag(:zip, nil, placeholder: 'Zip Code', required: true, pattern: '[\d]{5,}') %><br>
-  <%= hidden_field_tag "list_id", "#{@list.id}" %>
-  <%= hidden_field_tag "longitude" %>
-  <%= hidden_field_tag "latitude" %>
-  <%= hidden_field_tag "type", "from_address" %>
-  <%= submit_tag("Create Clue", id: "create-clue-from-address", class: "btn btn-small btn-success") %>
-<% end %>
+<%= render partial: 'new_from_address_form' %>

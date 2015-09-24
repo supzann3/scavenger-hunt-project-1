@@ -1,0 +1,8 @@
+<div class= "edit_clue">
+  Edit your clue using the form below.
+  <%= form_tag(list_clues_path, method: "post", class:"edit-clue-form") do %>
+    <%= text_field_tag(:text, nil, value: clue.text) %><br>
+    <%= text_field_tag(:answer, nil, value: clue.answer) %><br>
+    <%= submit_tag("Submit Clue", class: "btn btn-small btn-success") %>
+  <% end %>
+</div>

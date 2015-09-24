@@ -15,6 +15,10 @@ class ListsController < ApplicationController
     redirect_to "/lists/#{@list.id}/clues/new"
   end
 
+  def update
+    @list = List.find(params[:id])
+  end
+
   def show
     @list=List.find(params[:id])
   end
