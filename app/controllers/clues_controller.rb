@@ -51,7 +51,7 @@ class CluesController < ApplicationController
   def show
     # @list=List.find(params[:list_id])
     @clue = Clue.find(params[:id])
-    current_user.current_clue_id = @clue.id
+    current_user.clue.id = @clue.id
     current_user.save
   end
 
@@ -60,13 +60,13 @@ class CluesController < ApplicationController
     user_answer = params[:answer]
     user_location = [params[:latitude], params[:longitude]]
     if params[:reset_clue_id] == "true"
-      current_user.current_clue_id = nil
+      current_user.current.clue.id = nil
       current_user.save
       redirect_to root_path
     elsif @clue.submission_valid?(user_answer, user_location)
       if @clue.last_clue?
         flash[:notice] = "You win! Play again?"
-        current_user.current_clue_id = nil
+        current_user.clue.id = nil
         current_user.save
         redirect_to root_path
       else

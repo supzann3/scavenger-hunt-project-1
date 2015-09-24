@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20150924203401) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.integer  "current_clue_id"
+    t.integer  "clue_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
