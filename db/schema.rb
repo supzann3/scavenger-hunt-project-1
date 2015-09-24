@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923171526) do
+ActiveRecord::Schema.define(version: 20150924202741) do
 
   create_table "clues", force: :cascade do |t|
     t.integer  "list_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20150923171526) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+    t.integer  "creator"
   end
 
   add_index "lists", ["user_id"], name: "index_lists_on_user_id"
@@ -61,7 +62,7 @@ ActiveRecord::Schema.define(version: 20150923171526) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.integer  "clue_id"
+    t.integer  "current_clue_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

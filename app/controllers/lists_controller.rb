@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
   def index
     @lists = List.all
-    if !!(current_user.clue_id)
+    if !!(current_user.current_clue_id)
       redirect_to "/lists/#{current_user.clue.list_id}/clues/#{current_user.clue_id}"
     end
   end
@@ -14,7 +14,7 @@ class ListsController < ApplicationController
     @list=List.create(name: params[:name], user_id: current_user.id, location: params[:location])
     redirect_to "/lists/#{@list.id}/clues/new"
   end
-  
+
   def show
     @list=List.find(params[:id])
   end
