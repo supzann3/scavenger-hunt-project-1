@@ -26,8 +26,20 @@ class CluesController < ApplicationController
 
   end
 
+  def update
+    # binding.pry
+    @clue = Clue.find(params[:id])
+    @clue.text = params[:text]
+    @clue.answer = params[:answer]
+    @clue.save
+
+    respond_to do |format|
+      format.json { render json: @clue.id }
+    end
+  end
+
   def destroy
-    
+
     @clue = Clue.find(params[:id])
     @clue.destroy
 

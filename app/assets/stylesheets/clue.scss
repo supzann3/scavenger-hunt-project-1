@@ -16,14 +16,40 @@
   margin: auto;
 }
 
+.clue-text {
+  font-weight: bolder;
+}
+
+.clue-info {
+  width: 85%;
+  float: left;
+  min-height: 100px;
+}
+
+.clue-wrapper{
+  margin-top: 50px;
+}
+
 .icons {
-  
+
 }
 
 .edit {
-  
+margin-bottom: 5px;
 }
 
 .delete {
-  
+
+}
+
+#new-clue-submit {
+  clear: both;
+  margin: auto;
+  // width: 50%
+}
+
+.edit_clue {
+  width: 100%;
+  display: none;
+  clear: both;
 }

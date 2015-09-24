@@ -21,20 +21,27 @@ $(document).ready(function(){
 
   $('.delete').click(function(e){
     e.preventDefault();
+    // debugger
     // $(this).parent().parent()
-    var clueId = $(this).parent().parent().children(".clue-id").text()
-    var listId = $(this).parent().parent().children(".list-id").text()
-    
+    var clueId = $(this).parent().parent().children('.clue-info').children('.clue-id').text()
+"1"
+    var listId = $(this).parent().parent().children('.clue-info').children('.list-id').text()
+"1"
+
     deleteClue(clueId, listId)
   });
 
   $('.edit').click(function(e){
+    $(this).parent().parent().children(".edit_clue").slideToggle(1000)
+  });
+
+  $('.edit-clue-form').submit(function(e){
     e.preventDefault();
-    // $(this).parent().parent()
-    var clueId = $(this).parent().parent().children(".clue-id").text()
-    
-    
-    insertEditForm(clueId, listId)
+    var listId = $(this).parent().parent().children('.clue-info').children('.list-id').text()
+    var clueId = $(this).parent().parent().children('.clue-info').children('.clue-id').text()
+    var text = $(this).children('#text').val()
+    var answer = $(this).children('#answer').val()
+    editClue(clueId, list_id, text, answer)
   });
 
 });
@@ -95,8 +102,8 @@ function createClue(){
 }
 
 function deleteClue(clueId, listId){
-  
-  $.ajax({ 
+
+  $.ajax({
     // /lists/:list_id/clues/:id(.:format)
     url: "/lists/" + listId + "/clues/" + clueId,
     type: 'DELETE',
@@ -109,18 +116,20 @@ function deleteClue(clueId, listId){
   });
 }
 
-// function editClue(clueId, listId){
-  
-//   $.ajax({ 
-//     // /lists/:list_id/clues/:id(.:format)
-//     url: "/lists/" + listId + "/clues/" + clueId,
-//     type: 'DELETE',
-//     data: {
-//       clue_id: clueId
-//       },
-//     success: function(message){
-//       $( "#clue-" + clueId ).remove();
-//     }
-//   });
-// }
+function editClue(clueId, listId, text, answer){
+
+  $.ajax({
+    url: "/lists/" + listId + "/clues/" + clueId,
+    type: 'PATCH',
+    data: {
+      text: text,
+      answer: answer
+      },
+    success: function(message){
+      $( "#clue-" + clueId ).children('.clue-info').children('.clue-text').text(text)
+      $( "#clue-" + clueId ).children('.clue-info').children('.clue-answer').text(answer)
+      $( "#clue-" + clueId ).children('.edit_clue').slideToggle(1000)
+    }
+  });
+}
 // //validations for address
