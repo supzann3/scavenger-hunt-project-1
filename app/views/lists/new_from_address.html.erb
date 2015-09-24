@@ -1,0 +1,9 @@
+<%= form_tag(new_from_address_path, method: "post", id:"new_from_address_form") do %>
+  <%= text_field_tag(:name, nil, placeholder: 'List Name') %><br>
+  <p>&nbsp;</p>
+  <%= text_field_tag(:location, nil, placeholder: 'Your Location', required) %><br>
+  <p>&nbsp;</p>
+  <%= hidden_field_tag "longitude" %>
+  <%= hidden_field_tag "latitude" %>
+  <%= submit_tag("Create Hunt", class: "btn btn-small btn-success") %>
+<% end %>

@@ -53,7 +53,31 @@ class CluesController < ApplicationController
     end
   end
 
+  def new_from_address
+    @list = List.find(params[:list_id])
+  end
+
+  def create_from_address
+    binding.pry
+    address = params[:address][:street]
+    city = params[:address][:city]
+    state = params[:address][:state]
+    zip = params[:address][:zip]
+
+    @address = Address.new([address, city, state, zip])
+    respond_to do |format|
+      format.js { render json: @address.coordinates }
+    end
+
+    # if @address.geocoder_knows?
+    #   binding.pry
+    #   return @address.coordinates
+    # end
+  end
+
   private
+
+  # @address = Address.new(["11 Broadway", "New York", "NY", "10004"])
 
 
 

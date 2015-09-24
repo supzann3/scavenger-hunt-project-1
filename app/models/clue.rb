@@ -23,6 +23,8 @@ class Clue < ActiveRecord::Base
     # distance <= 65 ? true : false
   end
 
+
+
   private
   def answer_valid?(user_answer)
     !!(self.answer == user_answer)
