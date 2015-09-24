@@ -10,6 +10,7 @@ class CluesController < ApplicationController
   end
 
   def create
+    # binding.pry
     @clue = Clue.create({
       latitude: params["latitude"],
       longitude: params["longitude"],
@@ -18,7 +19,33 @@ class CluesController < ApplicationController
       list_id: params["list_id"]
       })
     @list = List.find(params[:list_id])
-    redirect_to new_list_clue_path
+
+    respond_to do |format|
+      format.json { render json: @clue.id }
+    end
+
+  end
+
+  def update
+    # binding.pry
+    @clue = Clue.find(params[:id])
+    @clue.text = params[:text]
+    @clue.answer = params[:answer]
+    @clue.save
+
+    respond_to do |format|
+      format.json { render json: @clue.id }
+    end
+  end
+
+  def destroy
+
+    @clue = Clue.find(params[:id])
+    @clue.destroy
+
+    respond_to do |format|
+      format.json { render json: @clue.id }
+    end
   end
 
   def show
@@ -53,7 +80,31 @@ class CluesController < ApplicationController
     end
   end
 
+  def new_from_address
+    @list = List.find(params[:list_id])
+  end
+
+  def create_from_address
+    # binding.pry
+    address = params[:address][:street]
+    city = params[:address][:city]
+    state = params[:address][:state]
+    zip = params[:address][:zip]
+
+    @address = Address.new([address, city, state, zip])
+    respond_to do |format|
+      format.json { render json: @address.coordinates }
+    end
+
+    # if @address.geocoder_knows?
+    #   binding.pry
+    #   return @address.coordinates
+    # end
+  end
+
   private
+
+  # @address = Address.new(["11 Broadway", "New York", "NY", "10004"])
 
 
 
