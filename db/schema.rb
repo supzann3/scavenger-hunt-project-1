@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923172055) do
+ActiveRecord::Schema.define(version: 20150923171526) do
 
   create_table "clues", force: :cascade do |t|
     t.integer  "list_id"
