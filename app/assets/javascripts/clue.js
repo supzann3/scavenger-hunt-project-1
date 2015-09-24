@@ -3,26 +3,24 @@ $(document).ready(function(){
     e.preventDefault();
 
     getLocation(function(location){
-      // debugger
       $("#longitude").val(location.coords.longitude);
       $("#latitude").val(location.coords.latitude);
-      // debugger
       $('#clue-answer-form').unbind("submit").submit();
     });
-
-  //listener function to validate address
-
-  //listener function on submit to controller and lat and longitude
-  //success - put lat and log as values in hidden fields and submit form
-
   });
 
   $('#new-from-address').submit(function(e){
     e.preventDefault();
+    fetchAddressLocation();
+  });
 
-    fetchAddressLocation()
-  })
+  $('#new-clue-form').submit(function(e){
+    e.preventDefault();
+    createClue()
+  });
+
 });
+
 function getLocation(callback) {
     // callback
     if (navigator.geolocation) {
@@ -32,7 +30,7 @@ function getLocation(callback) {
     }
 }
 
-function fetchAddressLocation(){
+function fetchAddressLocation(callback){
     var listId = $('#list_id').val();
     $.ajax({
       url: "/lists/" + listId + "/newcluefromaddress",
@@ -44,11 +42,37 @@ function fetchAddressLocation(){
         zip: $('#zip').val()}
       },
       success: function(message){
-        debugger
-        $("#longitude").val(data.longitude);
-        $("#latitude").val(data.latitude);
+        $("#longitude").val(message['latitude']);
+        $("#latitude").val(message['longitude']);
+        createClue()
       }
     });
   }
 
+function addClueToList(){
+  $('#ol-clues').append(
+    "<li>" + $('#text').val() + "<br>" +
+    $('#answer').val() + "</li>"
+  )
+}
+
+function createClue(){
+  var listId = $('#list_id').val();
+  $.ajax({
+    url: "/lists/" + listId + "/clues",
+    type: 'POST',
+    data: {
+      answer: $('#answer').val(),
+      text: $('#text').val(),
+      latitude: $('#latitude').val(),
+      longitude: $('#longitude').val(),
+      list_id: $('#list_id').val()
+      },
+    success: function(message){
+      addClueToList()
+      $('form').trigger('reset')
+    }
+  });
+
+}
 //validations for address

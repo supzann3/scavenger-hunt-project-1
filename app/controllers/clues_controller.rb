@@ -10,6 +10,7 @@ class CluesController < ApplicationController
   end
 
   def create
+    # binding.pry
     @clue = Clue.create({
       latitude: params["latitude"],
       longitude: params["longitude"],
@@ -18,7 +19,16 @@ class CluesController < ApplicationController
       list_id: params["list_id"]
       })
     @list = List.find(params[:list_id])
-    redirect_to new_list_clue_path
+
+    respond_to do |format|
+      format.json { render json: @clue.id }
+    end
+
+    # if params[:type] == "on-the-go"
+    #   redirect_to new_list_clue_path
+    # else
+    #   redirect_to new_from_address_path
+    # end
   end
 
   def show
@@ -58,7 +68,7 @@ class CluesController < ApplicationController
   end
 
   def create_from_address
-    binding.pry
+    # binding.pry
     address = params[:address][:street]
     city = params[:address][:city]
     state = params[:address][:state]
@@ -66,7 +76,7 @@ class CluesController < ApplicationController
 
     @address = Address.new([address, city, state, zip])
     respond_to do |format|
-      format.js { render json: @address.coordinates }
+      format.json { render json: @address.coordinates }
     end
 
     # if @address.geocoder_knows?
