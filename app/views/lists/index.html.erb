@@ -16,9 +16,7 @@
   </div>
 </div>
 
-
-
-<div id="your-lists" class="panel panel-default">
+<div id="your-lists">
   <% @lists.each do |list| %>
     <% if list.clues.length > 0 && list.creator && list.creator == current_user.id %>
       <div class="col-xs-10 col-sm-4 panel panel-default">
@@ -36,7 +34,7 @@
 </div>
 
 
-<div id="all-lists" class="panel panel-default">
+<div id="all-lists">
   <% @lists.each do |list| %>
     <% if list.clues.length>0 %>
       <div class="col-xs-12 col-sm-6 panel panel-default">
