@@ -1,11 +1,21 @@
-<%= link_to "Create Hunt", new_list_path, method:"get", class: "btn btn-lg btn-success" %>
+<div class="collapse navbar-collapse" id="lists-selector">
+  <div class="container">
+    <div class="col-xs-1">
+    </div>
+    <div class="switch-lists-button col-xs-5" id="all-lists-button">
+      All Hunts
+    </div>
 
-<div class="switch-lists-button" id="all-lists-button">
-  All Lists
+    <div class="switch-lists-button col-xs-4" id="your-lists-button">
+      Hunts You Created
+    </div>
+    <div class="col-xs-2">
+    </div>
+  </div>
 </div>
 
-<div class="switch-lists-button" id="your-lists-button">
-  Your Lists
+<div class="">
+  <%= link_to "Create Hunt", new_list_path, method:"get", class: "btn btn-md btn-success" %>
 </div>
 
 <div id="your-lists">
