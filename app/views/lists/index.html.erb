@@ -1,12 +1,14 @@
-<%= link_to "Create Hunt", new_list_path, method:"get", class: "btn btn-lg btn-success" %>
+<div class="row" id="lists-selector">
+  <div class="switch-lists-button col-xs-6" id="all-lists-button">
+    All Hunts
+  </div>
 
-<div class="switch-lists-button" id="all-lists-button">
-  All Lists
+  <div class="switch-lists-button col-xs-6" id="your-lists-button">
+    Hunts You Created
+  </div>
 </div>
 
-<div class="switch-lists-button" id="your-lists-button">
-  Your Lists
-</div>
+<%= link_to "Create Hunt", new_list_path, method:"get", class: "btn btn-md btn-success" %>
 
 <div id="your-lists">
   <% @lists.each do |list| %>

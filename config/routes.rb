@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   post "/clues", to: "clues#answer"
   get "/lists/:list_id/newcluefromaddress", to: "clues#new_from_address", as: :new_from_address
   post "/lists/:list_id/newcluefromaddress", to: "clues#create_from_address", as: :create_from_address
-
+  post "/", to: "lists#reset_current_clue", as: :reset_current_clue
 end

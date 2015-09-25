@@ -27,7 +27,6 @@ class CluesController < ApplicationController
   end
 
   def update
-    # binding.pry
     @clue = Clue.find(params[:id])
     @clue.text = params[:text]
     @clue.answer = params[:answer]
