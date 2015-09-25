@@ -1,6 +1,6 @@
 <div class="names-locations">
 <p>
-Name: <%=@list.name %>
+  Name: <%=@list.name %>
 </p>
 <p>
   Location: <%=@list.location %>
@@ -17,6 +17,12 @@ Name: <%=@list.name %>
 </div>
 <p>&nbsp;</p>
 
-<div id="new-clue-form">
-  <%= render partial: "new" %>
+<div class="row">
+  <div id="new-clue-form" class="col-xs-6">
+    <%= render partial: "new" %>
+  </div>
+
+  <div id="new-clue-address-form" class="col-xs-6">
+    <%= render partial: "new_from_address_form" %>
+  </div>
 </div>
