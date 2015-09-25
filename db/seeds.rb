@@ -70,14 +70,14 @@ clue11.update_attribute(:list_id, list2.id)
 
 clue12 = Clue.create(
   text: "Located on the Upper West Side this is one of the largest museums in the world, and comprises 27 interconnected buildings, in addition to a planetarium and a library.",
-  answer:"American Museum of Natural History",
+  answer:"Natural History Museum",
   latitude: 40.782032,
   longitude: -73.9717188)
   clue12.update_attribute(:list_id, list3.id)
 
 clue13 = Clue.create(
   text: "This museum, located in Midtown, was established in 1929 and contains nearly 200,000 works from around the world spanning the last 150 years.",
-  answer:"Museum of Modern Art",
+  answer:"MoMA",
   latitude: 40.761417,
   longitude: -73.9771203)
   clue13.update_attribute(:list_id, list3.id)
@@ -98,7 +98,7 @@ clue15 = Clue.create(
 
 clue16 = Clue.create(
   text: "This museum, located on 5th Avenue, is known for its impressive architecture, arguably Frank Lloyd Wright's most important building of his late career.",
-  answer:"Solomon R. Guggenheim Museum",
+  answer:"Guggenheim Museum",
   latitude: 40.7830178,
   longitude: -73.9588884)
   clue16.update_attribute(:list_id, list3.id)
