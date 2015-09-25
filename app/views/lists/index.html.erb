@@ -1,14 +1,22 @@
-<div class="row" id="lists-selector">
-  <div class="switch-lists-button col-xs-6" id="all-lists-button">
-    All Hunts
-  </div>
+<div class="collapse navbar-collapse" id="lists-selector">
+  <div class="container">
+    <div class="col-xs-1">
+    </div>
+    <div class="switch-lists-button col-xs-5" id="all-lists-button">
+      All Hunts
+    </div>
 
-  <div class="switch-lists-button col-xs-6" id="your-lists-button">
-    Hunts You Created
+    <div class="switch-lists-button col-xs-4" id="your-lists-button">
+      Hunts You Created
+    </div>
+    <div class="col-xs-2">
+    </div>
   </div>
 </div>
 
-<%= link_to "Create Hunt", new_list_path, method:"get", class: "btn btn-md btn-success" %>
+<div class="">
+  <%= link_to "Create Hunt", new_list_path, method:"get", class: "btn btn-md btn-success" %>
+</div>
 
 <div id="your-lists">
   <% @lists.each do |list| %>
