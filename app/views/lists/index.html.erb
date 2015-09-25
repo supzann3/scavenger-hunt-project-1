@@ -1,25 +1,40 @@
-<%= link_to "Create Hunt", new_list_path, method:"get", class: "btn btn-lg btn-success" %>
-
-<div class="switch-lists-button" id="all-lists-button">
-  All Lists
-</div>
-
-<div class="switch-lists-button" id="your-lists-button">
-  Your Lists
+<%= link_to "Create Hunt", new_list_path, method:"get", class: "btn btn-md btn-success" %>
+<div class="row">
+  <div class="switch-lists-button col-xs-6" id="all-lists-button">
+    All Lists
+  </div>
+  <div class="switch-lists-button col-xs-6" id="your-lists-button">
+    Your Lists
+  </div>
 </div>
 
 <div id="your-lists">
   <% @lists.each do |list| %>
     <% if list.clues.length > 0 && list.creator && User.find(list.creator) == current_user.id  %>
-    <%= link_to "Name: #{list.name}, Location: #{list.location}", "/lists/#{list.id}/clues/#{list.clues.first.id}", method:"get", class: "btn btn-lg btn-success" %>
+      <div>
+        <div class="col-xs-10 col-sm-4">
+          <li><%= link_to "#{list.name}, #{list.location}", "/lists/#{list.id}/clues/#{list.clues.first.id}", method:"get", class: "btn btn-md btn-success" %></li>
+        </div>
+        <div id="circle-graph" class="col-xs-2 col-sm-2">
+          test
+        </div>
+      </div>
     <% end %>
   <% end %>
 </div>
 
+
 <div id="all-lists">
   <% @lists.each do |list| %>
     <% if list.clues.length>0 %>
-    <%= link_to "Name: #{list.name}, Location: #{list.location}", "/lists/#{list.id}/clues/#{list.clues.first.id}", method:"get", class: "btn btn-lg btn-success" %>
+      <!-- <div> -->
+        <div class="col-xs-10 col-sm-4">
+          <%= link_to "#{list.name}, #{list.location}", "/lists/#{list.id}/clues/#{list.clues.first.id}", method:"get", class: "btn btn-md btn-success"%>
+        </div>
+        <div id="circle-graph" class="col-xs-2 col-sm-2">
+          test
+        </div>
+      <!-- </div> -->
     <% end %>
   <% end %>
 </div>

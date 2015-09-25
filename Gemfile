@@ -21,6 +21,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'fuzzy-string-match', require: "fuzzystringmatch"
 
+gem "d3-rails"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
