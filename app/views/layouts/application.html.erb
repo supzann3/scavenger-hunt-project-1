@@ -61,7 +61,6 @@
       </div>
     </div>
   </div>
-        <%=yield %>
 
 <!-- Preloader -->
 <div id="preloader"><div id="status">&nbsp;</div></div>
@@ -100,6 +99,16 @@
                 <li>
                     <a class="page-scroll" href="#contact">CONTACT</a>
                 </li>
+                <li>
+                  <% if user_signed_in? %>
+                    Logged in as <strong><%= current_user.email %></strong>.
+                    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+                    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+                  <% else %>
+                    <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+                    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+                  <% end %>
+                </li>
             </ul>
         </div>
     </div>
@@ -123,25 +132,27 @@
 <section class="action2 container-fluid text-center wow fadeIn">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
-            <h3>CSOON IS THE PERFECT THEME FOR YOUR NEXT PROJECT!</h3>
-            <p>It’s time to grow your business. Go make something awesome.</p>
-            <p><a href="/" class="btn btn-white btn-lg">Get it Now!</a></p>
+            <h2>Scavenger Hunt</h2>
+            <%= yield %>
+            <!-- <h3>CSOON IS THE PERFECT THEME FOR YOUR NEXT PROJECT!</h3> -->
+            <!-- <p>It’s time to grow your business. Go make something awesome.</p> -->
+            <!-- <p><a href="/" class="btn btn-white btn-lg">Get it Now!</a></p> -->
         </div>
     </div>
 </section>
 
 <!-- About Section -->
-<section id="about" class="container-fluid text-center wow fadeIn">
+<!-- <section id="about" class="container-fluid text-center wow fadeIn">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
             <h2>WHO WE ARE</h2>
             <p>The collaborative process of web development requires close integration of technology and design - two disciplines that inform one another. We make hip and exciting web sites. Big and Small. Concept development, interaction design, interface design, production management, strategic planning, usability testing.</p>
         </div>
     </div>
-</section>
+</section> -->
 
 <!-- About2 Section -->
-<section id="about2" class="container-fluid text-center wow fadeIn">
+<!-- <section id="about2" class="container-fluid text-center wow fadeIn">
     <div class="col-lg-10 col-lg-offset-1">
         <div class="row">
             <div class="col-lg-3 col-sm-6 wow fadeIn" data-wow-delay=".2s">
@@ -162,16 +173,16 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <!-- Action2 Section -->
-<section class="action2 container-fluid text-center wow fadeIn">
+<!-- <section class="action2 container-fluid text-center wow fadeIn">
     <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
-            <h2>Subscribe to our newsletter!</h2>
+            <h2>Subscribe to our newsletter!</h2> -->
             <!-- MailChimp Signup Form -->
             <!-- Replace the form action in the line below with your MailChimp embed action! For more informatin on how to do this please visit the Docs! -->
-            <form role="form" action="//forbetterweb.us11.list-manage.com/subscribe/post?u=4f751a6c58b225179404715f0&amp;id=18fc72763a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="form-inline subscribe-form" target="_blank" novalidate="">
+            <!-- <form role="form" action="//forbetterweb.us11.list-manage.com/subscribe/post?u=4f751a6c58b225179404715f0&amp;id=18fc72763a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="form-inline subscribe-form" target="_blank" novalidate="">
                 <div class="input-group input-group-lg">
                     <input type="email" name="EMAIL" class="form-control" id="mce-EMAIL" placeholder="Email address...">
         <span class="input-group-btn">
@@ -182,14 +193,14 @@
                     <div class="response" id="mce-error-response" style="display:none"></div>
                     <div class="response" id="mce-success-response" style="display:none"></div>
                 </div>
-            </form>
+            </form> -->
             <!-- End MailChimp Signup Form -->
-        </div>
+        <!-- </div>
     </div>
-</section>
+</section> -->
 
 <!-- Services Section -->
-<section id="services" class="container-fluid text-center wow fadeIn">
+<!-- <section id="services" class="container-fluid text-center wow fadeIn">
     <div class="col-lg-10 col-lg-offset-1">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
@@ -216,10 +227,10 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <!-- Action2 Section -->
-<section class="action2 container-fluid text-center wow fadeIn">
+<!-- <section class="action2 container-fluid text-center wow fadeIn">
     <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
             <h2>DESIGNER/CODER FRIENDLY</h2>
@@ -232,7 +243,7 @@
             <p>Designed for Everyone. CSOON will look fabulous on all devices and easily and efficiently scales your project with one code base, from phones to tablets to desktops.</p>
         </div>
     </div>
-</section>
+</section> -->
 
 <!-- Team Section -->
 <section id="team" class="container-fluid text-center wow fadeIn">
