@@ -1,33 +1,36 @@
-<div class="collapse navbar-collapse" id="lists-selector">
-  <div class="container">
-    <div class="col-xs-1">
-    </div>
-    <div class="switch-lists-button col-xs-5" id="all-lists-button">
+<div class="row">
+  <div class="panel panel-default col-xs-12 col-sm-4">
+    <div class="switch-lists-button panel-body" id="all-lists-button">
       All Hunts
     </div>
-
-    <div class="switch-lists-button col-xs-4" id="your-lists-button">
+  </div>
+  <div class="panel panel-default col-xs-12 col-sm-4">
+    <div class="switch-lists-button panel-body" id="your-lists-button">
       Hunts You Created
     </div>
-    <div class="col-xs-2">
+  </div>
+  <div class="panel panel-default col-xs-12 col-sm-4">
+    <div class="panel-body">
+      <%= link_to "Create Hunt", new_list_path, method:"get" %>
     </div>
   </div>
 </div>
 
-<div class="">
-  <%= link_to "Create Hunt", new_list_path, method:"get", class: "btn btn-md btn-success" %>
-</div>
 
-<div id="your-lists">
+
+<div id="your-lists" class="panel panel-default">
   <% @lists.each do |list| %>
     <% if list.clues.length > 0 && list.creator && list.creator == current_user.id %>
-      <div class="col-xs-10 col-sm-4">
-        <%= link_to "#{list.name}, #{list.location}", "/lists/#{list.id}/clues/#{list.clues.first.id}", method:"get", class: "btn btn-md btn-success" %>
+      <div class="col-xs-10 col-sm-4 panel-body">
+        <%= link_to "#{list.name}, #{list.location}", "/lists/#{list.id}/clues/#{list.clues.first.id}", method:"get" %>
       </div>
       <div class="col-xs-2 col-sm-2">
+<<<<<<< HEAD
         <!-- <div id="circle-graph" >
           test
         </div> -->
+=======
+>>>>>>> home-button
         <div id="link-to-edit-page">
           <%= link_to image_tag("edit.png"), "/lists/#{list.id}/edit" %>
         </div>
@@ -37,15 +40,21 @@
 </div>
 
 
-<div id="all-lists">
+<div id="all-lists" class="panel panel-default">
   <% @lists.each do |list| %>
     <% if list.clues.length>0 %>
+<<<<<<< HEAD
       <div class="col-xs-10 col-sm-4">
         <%= link_to "#{list.name}, #{list.location}", "/lists/#{list.id}/clues/#{list.clues.first.id}", method:"get", class: "btn btn-md btn-success"%>
       </div>
       <!-- <div id="circle-graph" class="col-xs-2 col-sm-2">
         test
       </div> -->
+=======
+      <div class="col-xs-12 col-sm-6  ">
+        <%= link_to "#{list.name}, #{list.location}", "/lists/#{list.id}/clues/#{list.clues.first.id}", method:"get" %>
+      </div>
+>>>>>>> home-button
     <% end %>
   <% end %>
 </div>
