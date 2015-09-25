@@ -12,6 +12,9 @@
     </div>
 </div>
 
+<!--  STYLING - Please note that any styling that happens below also has to happen on the javascript pages.-->
+
+
 <div class="clue-list">
   <% if @list.clues.length>0 %>
   <%= render partial:"clues/all_clues" %>
@@ -22,18 +25,29 @@
 </div>
 <p>&nbsp;</p>
 
-<div class="add-clue-wrapper">
-  <div id="new-clue-form" class="col-xs-6">
-    <div class="">
-      Create a new clue from your current location.
+<!--  STYLING - Please note that any styling that happens below also has to happen on the javascript pages.-->
+
+<div id="add-clue-wrapper">
+  <div id="current_form">
+    <div id="new-clue-form">
+      <div class="">
+        Use the form below to create a clue leading players to your current location.  We will draw your coordinates from your device.  You must be at the location of the answer to your clue.
+      </div>
+      <%= form_tag("lists/#{@list.id}/clues", method: "post", id:"new-clue-form") do %>
+      <%= text_area_tag(:text, nil, placeholder: 'Your Question') %><br>
+      <%= text_field_tag(:answer, nil, placeholder: 'Enter Answer') %><br>
+      <%= hidden_field_tag "list_id", "#{@list.id}" %>
+      <%= hidden_field_tag "longitude" %>
+      <%= hidden_field_tag "latitude" %>
+    <div id="new-clue-address-form">
+      <button id="toggle-address" class="btn btn-small btn-success">Let me fill in the address for the location of my clue.</button>
     </div>
-    <%= render partial: "clues/new" %>
+    <div id="submit-new-clue-form">
+      <button id="new-clue-form-submit-button" class="btn btn-small btn-success">Create my clue using my current coordinates.</button>
+      <button id="new-from-address-submit-button" class="btn btn-small btn-success">Create my clue!</button>'
+    </div>    
+    <% end %>
   </div>
 
-  <div id="new-clue-address-form" class="col-xs-6">
-    <div class="">
-      Create a new clue manually.
-    </div>
-    <%= render partial: "clues/new_from_address_form" %>
-  </div>
+
 </div>
