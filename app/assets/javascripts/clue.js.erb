@@ -10,7 +10,6 @@ $(document).ready(function(){
   });
 
   $('#new-from-address-submit-button').click(function(e){
-    debugger
     e.preventDefault();
     fetchAddressLocation();
   });
@@ -55,7 +54,6 @@ function getLocation(callback) {
 }
 
 function fetchAddressLocation(callback){
-  debugger
     var listId = $('#list_id').val();
     $.ajax({
       url: "/lists/" + listId + "/newcluefromaddress",
