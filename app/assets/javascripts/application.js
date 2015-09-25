@@ -11,7 +11,16 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap-sprockets
 //= require jquery_ujs
-//= require bootstrap
-//= require_tree ../../../vendor/assets/javascripts/.
+//require_tree ../../../vendor/assets/javascripts/.
+//= require jquery.easing.min
+//= require jquery.countdown.min
+//= require device.min
+//= require wow.min
+//= require smoothscroll
+//= require map
+//= require map
+//= require vegas/vegas.min
+//= require csoon
 //= require_tree .
