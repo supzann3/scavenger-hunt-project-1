@@ -10,6 +10,7 @@ $(document).ready(function(){
   });
 
   $('#new-from-address-submit-button').click(function(e){
+    debugger
     e.preventDefault();
     fetchAddressLocation();
   });
@@ -54,6 +55,7 @@ function getLocation(callback) {
 }
 
 function fetchAddressLocation(callback){
+  debugger
     var listId = $('#list_id').val();
     $.ajax({
       url: "/lists/" + listId + "/newcluefromaddress",
@@ -91,10 +93,10 @@ function addClueToList(clueId, listId){
     "</div>" +
     "<div class= 'icons'>" +
       "<div class='edit'>" +
-        '<%= image_tag("edit.png")%>' +
+        '<img src="/assets/edit-05d072d1050f88951c524fe5efad2a6f6d5d73fb041df2d86d29be4656354d79.png" alt="Edit 05d072d1050f88951c524fe5efad2a6f6d5d73fb041df2d86d29be4656354d79" />' +
       "</div>" +
       "<div class='delete'>" +
-        '<%= image_tag("delete.png")%>' +
+        '<img src="/assets/delete-a35ffca5b9902c9a6167c37ad835a83127b7ee8070c0b8436a68137df206c07d.png" alt="Delete a35ffca5b9902c9a6167c37ad835a83127b7ee8070c0b8436a68137df206c07d" />' +
       "</div>" +
     "</div>" +
   "</div>")

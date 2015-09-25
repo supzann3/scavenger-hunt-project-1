@@ -1,0 +1,14 @@
+/* line 5, /Users/ryanponte/Development/scavenger-hunt-project-1/app/assets/stylesheets/list.scss */
+#your-lists {
+  display: none;
+}
+
+/* line 10, /Users/ryanponte/Development/scavenger-hunt-project-1/app/assets/stylesheets/list.scss */
+#new-from-address-submit-button {
+  display: none;
+}
+
+/* line 14, /Users/ryanponte/Development/scavenger-hunt-project-1/app/assets/stylesheets/list.scss */
+.hunt-item {
+  height: 60px;
+}

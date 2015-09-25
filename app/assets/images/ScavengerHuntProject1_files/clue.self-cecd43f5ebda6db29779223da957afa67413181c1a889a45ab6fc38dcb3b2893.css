@@ -1,0 +1,51 @@
+/* line 5, /Users/ryanponte/Development/scavenger-hunt-project-1/app/assets/stylesheets/clue.scss */
+.btn {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* line 10, /Users/ryanponte/Development/scavenger-hunt-project-1/app/assets/stylesheets/clue.scss */
+.hidden {
+  display: none;
+}
+
+/* line 14, /Users/ryanponte/Development/scavenger-hunt-project-1/app/assets/stylesheets/clue.scss */
+.clue-wrapper {
+  width: 60%;
+  margin: auto;
+}
+
+/* line 19, /Users/ryanponte/Development/scavenger-hunt-project-1/app/assets/stylesheets/clue.scss */
+.clue-text {
+  font-weight: bolder;
+}
+
+/* line 23, /Users/ryanponte/Development/scavenger-hunt-project-1/app/assets/stylesheets/clue.scss */
+.clue-info {
+  width: 85%;
+  float: left;
+  min-height: 100px;
+}
+
+/* line 29, /Users/ryanponte/Development/scavenger-hunt-project-1/app/assets/stylesheets/clue.scss */
+.clue-wrapper {
+  margin-top: 50px;
+}
+
+/* line 37, /Users/ryanponte/Development/scavenger-hunt-project-1/app/assets/stylesheets/clue.scss */
+.edit {
+  margin-bottom: 5px;
+}
+
+/* line 45, /Users/ryanponte/Development/scavenger-hunt-project-1/app/assets/stylesheets/clue.scss */
+#new-clue-submit {
+  clear: both;
+  margin: auto;
+}
+
+/* line 51, /Users/ryanponte/Development/scavenger-hunt-project-1/app/assets/stylesheets/clue.scss */
+.edit_clue {
+  width: 100%;
+  display: none;
+  clear: both;
+}
