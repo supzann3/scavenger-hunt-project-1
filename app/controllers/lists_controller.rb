@@ -7,7 +7,7 @@ class ListsController < ApplicationController
   end
 
   def new
-    @list=List.new
+    @list = List.new
   end
 
   def create
@@ -16,7 +16,7 @@ class ListsController < ApplicationController
   end
 
   def edit
-    
+    @list = List.find(params[:id])
   end
 
   def update

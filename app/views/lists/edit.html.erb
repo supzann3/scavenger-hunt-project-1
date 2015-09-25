@@ -1,0 +1,39 @@
+<div class="names-locations row">
+  <div class="col-xs-3">
+    <div>
+      Name: <%=@list.name %>
+    </div>
+    <div>
+      Location: <%=@list.location %>
+    </div>
+  </div>
+    <div class= "icons col-xs-3">
+      <div class= "edit-list-icon"><%= image_tag("edit.png")%></div>
+    </div>
+</div>
+
+<div class="clue-list">
+  <% if @list.clues.length>0 %>
+  <%= render partial:"clues/all_clues" %>
+  <div id="new-clue-submit" >
+    <%= link_to "I'm Done!", "/lists/#{@list}/clues", method:"get", class: "btn btn-small btn-success" %>
+  </div>
+  <% end %>
+</div>
+<p>&nbsp;</p>
+
+<div class="add-clue-wrapper">
+  <div id="new-clue-form" class="col-xs-6">
+    <div class="">
+      Create a new clue from your current location.
+    </div>
+    <%= render partial: "clues/new" %>
+  </div>
+
+  <div id="new-clue-address-form" class="col-xs-6">
+    <div class="">
+      Create a new clue manually.
+    </div>
+    <%= render partial: "clues/new_from_address_form" %>
+  </div>
+</div>
