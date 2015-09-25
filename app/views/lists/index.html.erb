@@ -25,12 +25,6 @@
         <%= link_to "#{list.name}, #{list.location}", "/lists/#{list.id}/clues/#{list.clues.first.id}", method:"get" %>
       </div>
       <div class="col-xs-2 col-sm-2">
-<<<<<<< HEAD
-        <!-- <div id="circle-graph" >
-          test
-        </div> -->
-=======
->>>>>>> home-button
         <div id="link-to-edit-page">
           <%= link_to image_tag("edit.png"), "/lists/#{list.id}/edit" %>
         </div>
@@ -43,18 +37,12 @@
 <div id="all-lists" class="panel panel-default">
   <% @lists.each do |list| %>
     <% if list.clues.length>0 %>
-<<<<<<< HEAD
       <div class="col-xs-10 col-sm-4">
         <%= link_to "#{list.name}, #{list.location}", "/lists/#{list.id}/clues/#{list.clues.first.id}", method:"get", class: "btn btn-md btn-success"%>
       </div>
-      <!-- <div id="circle-graph" class="col-xs-2 col-sm-2">
-        test
-      </div> -->
-=======
       <div class="col-xs-12 col-sm-6  ">
         <%= link_to "#{list.name}, #{list.location}", "/lists/#{list.id}/clues/#{list.clues.first.id}", method:"get" %>
       </div>
->>>>>>> home-button
     <% end %>
   <% end %>
 </div>
