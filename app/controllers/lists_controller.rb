@@ -1,9 +1,6 @@
 class ListsController < ApplicationController
   def index
     @lists = List.all
-    # if !!(current_user.clue)
-    #   redirect_to "/lists/#{current_user.clue.list_id}/clues/#{current_user.clue_id}"
-    # end
   end
 
   def new
@@ -21,6 +18,13 @@ class ListsController < ApplicationController
 
   def update
     @list = List.find(params[:id])
+    @list.name = params[:name]
+    @list.location = params[:location]
+    @list.save
+
+    respond_to do |format|
+      format.json { render json: @list.id }
+    end
   end
 
   def show
