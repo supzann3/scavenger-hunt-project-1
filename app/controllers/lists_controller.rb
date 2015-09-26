@@ -1,12 +1,10 @@
 class ListsController < ApplicationController
+
   def index
     @lists = List.all
-<<<<<<< HEAD
     if !!(current_user.clue_id)
       redirect_to "/lists/#{current_user.clue.list_id}/clues/#{current_user.clue_id}"
     end
-=======
->>>>>>> ce3400bdf0acaec37eb582228f02a3650059c148
   end
 
   def new
