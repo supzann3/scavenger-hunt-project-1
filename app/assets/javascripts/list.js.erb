@@ -29,6 +29,17 @@ $(document).ready(function(){
     $("#new-clue-form").show();
   });
 
+  $("#edit-list-icon").click(function(e){
+    $('#edit-lists-form-wrapper').slideToggle(1000)
+  });
+
+  $('#edit-lists-form').submit(function(e){
+    e.preventDefault()
+    var listId = $(this).find('#list_id').val()
+    var name = $(this).find('#name').val()
+    var location = $(this).find('#location').val()
+    updateList(listId, name, location)
+  });
 });
 
 function insertAddressForm(){
@@ -40,5 +51,20 @@ function insertAddressForm(){
   );
   $("#new-clue-form-submit-button").hide()
   $("#new-from-address-submit-button").show()
-  // debugger
+}
+
+function updateList(listId, name, location){
+  $.ajax({
+    url: "/lists/" + listId,
+    type: 'PATCH',
+    data: {
+      name: name,
+      location: location
+      },
+    success: function(message){
+      $( "#list-title").text("Name: " + name)
+      $( "#list-location").text("Location: " + location);
+      $('#edit-lists-form-wrapper').slideToggle(1000)
+    }
+  });
 }
