@@ -88,7 +88,7 @@
                 <i class="fa fa-bars fa-2x"></i>
             </button>
             <a class="navbar-brand page-scroll wow fadeInRight" data-wow-duration="1s" data-wow-delay="1.4s" href="#page-top">
-                <span class="logo">CSOON</span> <i class="fa fa-star"></i>
+                <span class="logo">Scavenger Hunt</span> <i class="fa fa-star"></i>
             </a>
         </div>
 
@@ -100,20 +100,22 @@
                     <a href="#page-top"></a>
                 </li>
                   <% if user_signed_in? %>
-                    Logged in as <strong><%= current_user.email %></strong>.
                     <li>
                       <%= link_to 'Edit profile', edit_user_registration_path, :class => 'page-scroll' %>
                     </li>
                     <li>
                       <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'page-scroll'  %>
                     </li>
+                    <li>
+                     <strong>Logged in as<%=" "+ current_user.email %></strong>.
+                    </li>
                   <% else %>
-                  <li>
-                    <%= link_to "SIGN UP", new_user_registration_path, :class => 'page-scroll'  %>
-                  </li>
-                  <li>
-                    <%= link_to "LOGIN", new_user_session_path, :class => 'page-scroll'  %>
-                  </li>
+                    <li>
+                      <%= link_to "Sign Up", new_user_registration_path, :class => 'page-scroll'  %>
+                    </li>
+                    <li>
+                      <%= link_to "Login", new_user_session_path, :class => 'page-scroll'  %>
+                    </li>
                   <% end %>
                 <!-- <li>
                     <a class="page-scroll" href="#page-top">HOME</a>
@@ -139,14 +141,15 @@
 <!-- Intro Header -->
 <header class="intro">
     <div class="intro-body">
-        <%= image_tag 'logo.png', alt:"", class:"wow fadeIn", data:{wow:{duration:"4s"}}, data:{wow:{delay:".4s"}}  %>
+      <%# yield %>
+        <!-- <%= image_tag 'logo.png', alt:"", class:"wow fadeIn", data:{wow:{duration:"4s"}}, data:{wow:{delay:".4s"}}  %> -->
         <!-- <img src="img/logo.png" alt="" class="wow fadeIn" data-wow-duration="4s" data-wow-delay=".4s"> -->
         <div id="clock" class="wow fadeIn" data-wow-duration="6s" data-wow-delay=".6s"></div>
-        <p class="intro-text wow fadeIn" data-wow-duration="7s" data-wow-delay=".7s">WE ARE COMING SOON. STAY TUNED!</p>
-        <ul class="list-inline lead">
-            <li><a href="#about" class="btn btn-border btn-lg page-scroll wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1.4s"><i class="fa fa-chevron-down"></i> WHO WE ARE</a></li>
-            <li><a href="#contact" class="btn btn-white btn-lg page-scroll wow fadeInRight" data-wow-duration="1s" data-wow-delay="1.4s"><i class="fa fa-chevron-down"></i> CONTACT US</a></li>
-        </ul>
+        <!-- <p class="intro-text wow fadeIn" data-wow-duration="7s" data-wow-delay=".7s">WE ARE COMING SOON. STAY TUNED!</p> -->
+        <!-- <ul class="list-inline lead"> -->
+            <!-- <li><a href="#about" class="btn btn-border btn-lg page-scroll wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1.4s"><i class="fa fa-chevron-down"></i> WHO WE ARE</a></li> -->
+            <!-- <li><a href="#contact" class="btn btn-white btn-lg page-scroll wow fadeInRight" data-wow-duration="1s" data-wow-delay="1.4s"><i class="fa fa-chevron-down"></i> CONTACT US</a></li> -->
+        <!-- </ul> -->
     </div>
 </header>
 
@@ -158,7 +161,7 @@
             <%= yield %>
             <!-- <h3>CSOON IS THE PERFECT THEME FOR YOUR NEXT PROJECT!</h3> -->
             <!-- <p>It’s time to grow your business. Go make something awesome.</p> -->
-            <!-- <p><a href="/" class="btn btn-white btn-lg">Get it Now!</a></p> -->
+            <p><a href="/" class="btn btn-white btn-lg">Get it Now!</a></p>
         </div>
     </div>
 </section>
