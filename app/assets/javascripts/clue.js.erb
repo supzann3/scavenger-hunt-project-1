@@ -1,11 +1,44 @@
 $(document).ready(function(){
+  onLoad();
+  onAjax();
+});
+
+$(document).ajaxComplete(function() {
+  onAjax();
+});
+
+function onAjax(){
+  $('.delete').click(function(e){
+  e.preventDefault();
+  var clueId = $(this).parents('.clue-wrapper').children('.clue-info').children('.clue-id').text();
+  var listId = $(this).parents('.clue-wrapper').children('.clue-info').children('.list-id').text();
+  deleteClue(clueId, listId);
+});
+
+$('.edit').click(function(e){
+  $(this).parent().parent().children(".edit_clue").slideToggle(1000);
+});
+}
+
+function onLoad(){
   $("#clue-answer-form").submit(function(e){
     e.preventDefault();
 
     getLocation(function(location){
       $("#longitude").val(location.coords.longitude);
       $("#latitude").val(location.coords.latitude);
+      createClue()
       $('#clue-answer-form').unbind("submit").submit();
+    });
+  });
+
+  $("#new-clue-form").submit(function(e){
+    e.preventDefault()
+
+    getLocation(function(location){
+      $("#longitude").val(location.coords.longitude);
+      $("#latitude").val(location.coords.latitude);
+      $('#new-clue-form').unbind("submit").submit();
     });
   });
 
@@ -14,96 +47,56 @@ $(document).ready(function(){
     fetchAddressLocation();
   });
 
-  $('#new-clue-form-submit-button').click(function(e){
-    e.preventDefault();
-    createClue();
-  });
-
   $('.delete').click(function(e){
     e.preventDefault();
-    debugger
     var clueId = $(this).parents('.clue-wrapper').children('.clue-info').children('.clue-id').text();
     var listId = $(this).parents('.clue-wrapper').children('.clue-info').children('.list-id').text();
     deleteClue(clueId, listId);
   });
 
   $('.edit').click(function(e){
-    // debugger
     $(this).parent().parent().children(".edit_clue").slideToggle(1000);
   });
 
   $('.edit-clue-form').submit(function(e){
     e.preventDefault();
-    var listId = $(this).parent().parent().children('.clue-info').children('.list-id').text();
-    var clueId = $(this).parent().parent().children('.clue-info').children('.clue-id').text();
+    var clueId = $(this).parents('.clue-wrapper').children('.clue-info').children('.clue-id').text();
+    var listId = $(this).parents('.clue-wrapper').children('.clue-info').children('.list-id').text();
     var text = $(this).children('#text').val();
     var answer = $(this).children('#answer').val();
     editClue(clueId, list_id, text, answer);
   });
-
-});
+}
 
 function getLocation(callback) {
-    // callback
-    if (navigator.geolocation) {
-       navigator.geolocation.getCurrentPosition(callback);
-    } else {
-        $("#test").html("Geolocation is not supported by this browser.");
-    }
+  if (navigator.geolocation) {
+     navigator.geolocation.getCurrentPosition(callback);
+  } else {
+      $("#test").html("Geolocation is not supported by this browser.");
+  }
 }
 
 function fetchAddressLocation(callback){
-    var listId = $('#list_id').val();
-    $.ajax({
-      url: "/lists/" + listId + "/newcluefromaddress",
-      type: 'POST',
-      data: { address: {
+  var listId = $('#list_id').val();
+  $.ajax({
+    url: "/lists/" + listId + "/newcluefromaddress",
+    type: 'POST',
+    data: { address: {
 
-        street: $('#add-clue-wrapper').find('#street').val(),
-        city: $('#add-clue-wrapper').find('#city').val(),
-        state: $('#add-clue-wrapper').find('#state').val(),
-        zip: $('#add-clue-wrapper').find('#zip').val()}
-      },
-      success: function(message){
-        $("#longitude").val(message['latitude']);
-        $("#latitude").val(message['longitude']);
-        createClue(message);
-      }
-    });
-  }
-
-function addClueToList(message, listId){
-
-  // $('#all-clues').append("<div class= 'clue-wrapper' id='clue-'" + clueId + ">" +
-  //   "<div class='clue-info'>" +
-  //     "<div class='hidden clue-id'>" +
-  //       clueId +
-  //     "</div>" +
-  //     "<div class='hidden list-id'>" +
-  //       listId +
-  //     "</div>" +
-  //     "<div class='clue-text'>" +
-  //       $('#new-clue-form').find('#text').val() +
-  //     "</div>" +
-  //     "<div class='clue-answer'>" +
-  //       $('#new-clue-form').find('#answer').val() +
-  //     "</div>" +
-  //   "</div>" +
-  //   "<div class= 'icons'>" +
-  //     "<div class='edit'>" +
-  //       '<%= image_tag("edit.png")%>' +
-  //     "</div>" +
-  //     "<div class='delete'>" +
-  //       '<%= image_tag("delete.png")%>' +
-  //     "</div>" +
-  //   "</div>" +
-  // "</div>")
-
-  $('#all-clues').append(message)
+      street: $('#add-clue-wrapper').find('#street').val(),
+      city: $('#add-clue-wrapper').find('#city').val(),
+      state: $('#add-clue-wrapper').find('#state').val(),
+      zip: $('#add-clue-wrapper').find('#zip').val()}
+    },
+    success: function(message){
+      $("#longitude").val(message['latitude']);
+      $("#latitude").val(message['longitude']);
+      createClue(message);
+    }
+  });
 }
 
 function createClue(){
-  $('#all-clues').append("<div></div>")
   var listId = $('#list_id').val();
   $.ajax({
     url: "/lists/" + listId + "/clues",
@@ -117,8 +110,8 @@ function createClue(){
       list_id: $('#new-clue-form').find('#list_id').val()
       },
     success: function(message){
-      debugger
-      // addClueToList(message, listId);
+      // debugger
+      $('#all-clues').append(message)
       $('form').trigger('reset');
       $('#new-clue-address-form').html('<button id="toggle-address" class="btn btn-white btn-lg">Let me fill in the address for the location of my clue.</button>')
       $("#new-from-address-submit-button").hide()
@@ -129,9 +122,7 @@ function createClue(){
 }
 
 function deleteClue(clueId, listId){
-
   $.ajax({
-    // /lists/:list_id/clues/:id(.:format)
     url: "/lists/" + listId + "/clues/" + clueId,
     type: 'DELETE',
     data: {
@@ -144,7 +135,6 @@ function deleteClue(clueId, listId){
 }
 
 function editClue(clueId, listId, text, answer){
-
   $.ajax({
     url: "/lists/" + listId + "/clues/" + clueId,
     type: 'PATCH',
@@ -155,8 +145,8 @@ function editClue(clueId, listId, text, answer){
     success: function(message){
       $( "#clue-" + clueId ).children('.clue-info').children('.clue-text').text(text);
       $( "#clue-" + clueId ).children('.clue-info').children('.clue-answer').text(answer);
-      $( "#clue-" + clueId ).children('.edit_clue').slideToggle(1000);
+      $( "#clue-" + clueId ).find('.edit_clue').slideToggle(1000);
     }
   });
 }
-// //validations for address
+

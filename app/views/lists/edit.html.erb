@@ -17,7 +17,7 @@
           <div id= "edit-list-icon"><%= image_tag("edit.png")%></div>
         </div>
       </div>
-      <div id="edit-lists-form-wrapper" class="hidden">
+      <div id="edit-lists-form-wrapper" style="display:none">
         <%= form_tag("/list/#{@list.id}", method: "post", id:"edit-lists-form") do %>
           <%= hidden_field_tag "list_id", "#{@list.id}" %>
           <%= text_field_tag(:name, nil, value: @list.name) %><br>

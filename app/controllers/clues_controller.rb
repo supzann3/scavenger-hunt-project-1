@@ -21,7 +21,7 @@ class CluesController < ApplicationController
     @list = List.find(params[:list_id])
 
     respond_to do |format|
-      format.js
+      format.js { j render(:partial => "clue_panel")}
     end
 
   end
