@@ -15,7 +15,7 @@
       <%= form_tag("/list/#{@list.id}/clues", method: "post", class:"edit-clue-form") do %>
         <%= text_field_tag(:text, nil, value: @clue.text, class: "form-control") %><br>
         <%= text_field_tag(:answer, nil, value: @clue.answer, class: "form-control") %><br>
-        <%= submit_tag("Update Clue", class: "btn btn-small btn-primary") %>
+        <%= submit_tag("Update Clue", class: "btn btn-small") %>
       <% end %>
     </div>
   </div>

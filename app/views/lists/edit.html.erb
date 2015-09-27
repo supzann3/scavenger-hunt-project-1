@@ -22,7 +22,7 @@
           <%= hidden_field_tag "list_id", "#{@list.id}" %>
           <%= text_field_tag(:name, nil, value: @list.name) %><br>
           <%= text_field_tag(:location, nil, value: @list.location) %><br>
-          <%= submit_tag("Update", class: "btn btn-small btn-primary") %>
+          <%= submit_tag("Update", class: "btn btn-small") %>
         <% end %>
       </div>
     </div>
@@ -51,18 +51,18 @@
           Use the form below to create a new clue.  You can choose to have us locate your clue based on your current location or to input an address.
         </div>
         <div class="panel-body">
-          <%= form_tag("lists/#{@list.id}/clues", method: "post", id:"new-clue-form") do %>
+          <%= form_tag("/lists/#{@list.id}/clues", method: "post", id:"new-clue-form") do %>
             <%= text_area_tag(:text, nil, placeholder: 'Your Question', class: "form-control") %><br>
             <%= text_field_tag(:answer, nil, placeholder: 'Enter Answer', class: "form-control") %><br>
             <%= hidden_field_tag "list_id", "#{@list.id}" %>
             <%= hidden_field_tag "longitude" %>
             <%= hidden_field_tag "latitude" %>
             <div id="new-clue-address-form">
-              <button id="toggle-address" class="btn btn-small btn-primary">Let me input an address.</button>
+              <button id="toggle-address" class="btn btn-small btn-black">Let me input an address.</button>
             </div>
             <div id="submit-new-clue-form">
-              <button id="new-clue-form-submit-button" class="btn btn-small btn-primary">Create my clue!</button>
-              <button id="new-from-address-submit-button" class="hidden btn btn-small btn-primary">Create my clue!</button>'
+              <button id="new-clue-form-submit-button" class="btn btn-small btn-black">Create my clue!</button>
+              <button id="new-from-address-submit-button" class="hidden btn btn-small btn-black">Create my clue!</button>'
             </div>
         </div>
         <% end %>
@@ -70,7 +70,7 @@
   <!-- </div> -->
 
   <div id="new-clue-submit" >
-    <%= link_to "Return Home", "/", method:"get", class: "btn btn-small btn-success" %>
+    <%= link_to "Return Home", "/", method:"get", class: "btn btn-small brn-black" %>
   </div>
 
 
