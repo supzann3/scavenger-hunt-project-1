@@ -50,12 +50,12 @@
       </div>
     </nav>
 
-    <% if notice %>
+    <!-- <% if notice %>
        <p class="alert alert-success"><%= notice %></p>
     <% end %>
     <% if alert %>
        <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
+    <% end %> -->
 
 
     <!-- <div class="navbar navbar-default navbar-fixed-bottom">
@@ -96,6 +96,12 @@
         <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
             <ul class="nav navbar-nav wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1.4s">
                 <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <% if notice %>
+                       <p class="alert alert-success"><%= notice %></p>
+                    <% end %>
+                    <% if alert %>
+                       <p class="alert alert-danger"><%= alert %></p>
+                    <% end %>
                 <li class="hidden">
                     <a href="#page-top"></a>
                 </li>
@@ -161,7 +167,7 @@
             <%= yield %>
             <!-- <h3>CSOON IS THE PERFECT THEME FOR YOUR NEXT PROJECT!</h3> -->
             <!-- <p>It’s time to grow your business. Go make something awesome.</p> -->
-            <p><a href="/" class="btn btn-white btn-lg">Get it Now!</a></p>
+            <!-- <p><a href="/" class="btn btn-white btn-lg">Get it Now!</a></p> -->
         </div>
     </div>
 </section>
