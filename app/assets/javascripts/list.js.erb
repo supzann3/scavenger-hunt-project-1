@@ -44,13 +44,13 @@ $(document).ready(function(){
 
 function insertAddressForm(){
   $('#new-clue-address-form').html(
-    "<input type='text' name='street' id='street' placeholder='Street Address' required>" +
-    "<input type='text' name='city' id='city' placeholder='City' required>" +
-    "<input type='text' name='state' id='state' placeholder='State' required>" +
-    "<input type='text' name='zip' id='zip' placeholder='Zip Code' required>"
+    "<input type='text' name='street' id='street' class='form-control' placeholder='Street Address' required>" +
+    "<input type='text' name='city' id='city' class='form-control' placeholder='City' required>" +
+    "<input type='text' name='state' id='state' class='form-control' placeholder='State' required>" +
+    "<input type='text' name='zip' id='zip' class='form-control' placeholder='Zip Code' required>"
   );
-  $("#new-clue-form-submit-button").hide()
-  $("#new-from-address-submit-button").show()
+  $("#new-clue-form-submit-button").addClass('hidden')
+  $("#new-from-address-submit-button").removeClass('hidden').show()
 }
 
 function updateList(listId, name, location){

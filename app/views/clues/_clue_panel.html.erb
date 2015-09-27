@@ -1,0 +1,22 @@
+<div class= "clue-wrapper panel panel-default" id= <%="clue-#{@clue.id}" %>>
+  <div class="clue-info panel-heading">
+    <div class="hidden clue-id"><%= "#{@clue.id}" %></div>
+    <div class="hidden list-id"><%= "#{@clue.list.id}" %></div>
+    <div class="clue-text "><%=  "Clue:  #{@clue.text}" %></div>
+    <div class="clue-answer"><%= "Answer:  #{@clue.answer}" %></div>
+  </div>
+  <div class="panel-body">
+    <div class= "icons clearfix">
+      <div class= "edit"><%= image_tag("edit.png")%></div>
+      <div class= "delete"><%= image_tag("delete.png")%></div>
+    </div>
+    <div class="edit_clue" style="display:none">
+      Edit your clue using the form below.
+      <%= form_tag("/list/#{@list.id}/clues", method: "post", class:"edit-clue-form") do %>
+        <%= text_field_tag(:text, nil, value: @clue.text, class: "form-control") %><br>
+        <%= text_field_tag(:answer, nil, value: @clue.answer, class: "form-control") %><br>
+        <%= submit_tag("Update Clue", class: "btn btn-small btn-primary") %>
+      <% end %>
+    </div>
+  </div>
+</div>

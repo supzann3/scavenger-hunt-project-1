@@ -16,7 +16,7 @@
   </div>
 </div>
 
-<div id="your-lists">
+<div id="your-lists" class="hidden">
   <% @lists.each do |list| %>
     <% if list.clues.length > 0 && list.creator && list.creator == current_user.id %>
       <div class="col-xs-10 col-sm-4 panel panel-default">
@@ -26,7 +26,7 @@
       </div>
       <div class="col-xs-2 col-sm-2 panel panel-default">
         <div id="link-to-edit-page panel-body">
-          <%= link_to image_tag("edit.png"), "/lists/#{list.id}/edit" %>
+          <%= link_to image_tag("white-edit.png"), "/lists/#{list.id}/edit" %>
         </div>
       </div>
     <% end %>

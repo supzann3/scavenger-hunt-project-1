@@ -21,7 +21,7 @@ class CluesController < ApplicationController
     @list = List.find(params[:list_id])
 
     respond_to do |format|
-      format.json { render json: @clue.id }
+      format.js
     end
 
   end

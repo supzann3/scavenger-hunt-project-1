@@ -21,10 +21,10 @@ $(document).ready(function(){
 
   $('.delete').click(function(e){
     e.preventDefault();
-    // debugger
+    debugger
     $(this).parent().parent()
-    var clueId = $(this).parent().parent().children('.clue-info').children('.clue-id').text();
-    var listId = $(this).parent().parent().children('.clue-info').children('.list-id').text();
+    var clueId = $(this).parents('.clue-wrapper').children('.clue-info').children('.clue-id').text();
+    var listId = $(this).parents('.clue-wrapper').children('.clue-info').children('.list-id').text();
     deleteClue(clueId, listId);
   });
 
@@ -73,38 +73,43 @@ function fetchAddressLocation(callback){
     });
   }
 
-function addClueToList(clueId, listId){
-  $('#all-clues').append("<div class= 'clue-wrapper' id='clue-'" + clueId + ">" +
-    "<div class='clue-info'>" +
-      "<div class='hidden clue-id'>" +
-        clueId +
-      "</div>" +
-      "<div class='hidden list-id'>" +
-        listId +
-      "</div>" +
-      "<div class='clue-text'>" +
-        $('#new-clue-form').find('#text').val() +
-      "</div>" +
-      "<div class='clue-answer'>" +
-        $('#new-clue-form').find('#answer').val() +
-      "</div>" +
-    "</div>" +
-    "<div class= 'icons'>" +
-      "<div class='edit'>" +
-        '<%= image_tag("edit.png")%>' +
-      "</div>" +
-      "<div class='delete'>" +
-        '<%= image_tag("delete.png")%>' +
-      "</div>" +
-    "</div>" +
-  "</div>")
+function addClueToList(message, listId){
+
+  // $('#all-clues').append("<div class= 'clue-wrapper' id='clue-'" + clueId + ">" +
+  //   "<div class='clue-info'>" +
+  //     "<div class='hidden clue-id'>" +
+  //       clueId +
+  //     "</div>" +
+  //     "<div class='hidden list-id'>" +
+  //       listId +
+  //     "</div>" +
+  //     "<div class='clue-text'>" +
+  //       $('#new-clue-form').find('#text').val() +
+  //     "</div>" +
+  //     "<div class='clue-answer'>" +
+  //       $('#new-clue-form').find('#answer').val() +
+  //     "</div>" +
+  //   "</div>" +
+  //   "<div class= 'icons'>" +
+  //     "<div class='edit'>" +
+  //       '<%= image_tag("edit.png")%>' +
+  //     "</div>" +
+  //     "<div class='delete'>" +
+  //       '<%= image_tag("delete.png")%>' +
+  //     "</div>" +
+  //   "</div>" +
+  // "</div>")
+
+  $('#all-clues').append(message)
 }
 
 function createClue(){
+  $('#all-clues').append("<div></div>")
   var listId = $('#list_id').val();
   $.ajax({
     url: "/lists/" + listId + "/clues",
     type: 'POST',
+    dataType: "html",
     data: {
       answer: $('#new-clue-form').find('#answer').val(),
       text: $('#new-clue-form').find('#text').val(),
@@ -113,7 +118,8 @@ function createClue(){
       list_id: $('#new-clue-form').find('#list_id').val()
       },
     success: function(message){
-      addClueToList(message, listId);
+      debugger
+      // addClueToList(message, listId);
       $('form').trigger('reset');
       $('#new-clue-address-form').html('<button id="toggle-address" class="btn btn-small btn-success">Let me fill in the address for the location of my clue.</button>')
       $("#new-from-address-submit-button").hide()
