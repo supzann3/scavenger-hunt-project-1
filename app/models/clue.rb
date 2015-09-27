@@ -24,7 +24,7 @@ class Clue < ActiveRecord::Base
 
   def answer_valid?(user_answer)
     word_match = FuzzyStringMatch::JaroWinkler.create( :pure )
-    if word_match.getDistance("#{self.answer}".downcase, "#{user_answer}".downcase) > 0.55
+    if word_match.getDistance("#{self.answer}".downcase, "#{user_answer}".downcase) > 0.65
       return true
     else
       return false
