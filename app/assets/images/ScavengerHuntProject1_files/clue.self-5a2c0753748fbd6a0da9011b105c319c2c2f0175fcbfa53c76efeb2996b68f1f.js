@@ -99,7 +99,7 @@ function addClueToList(clueId, listId){
         '<img src="/assets/delete-a35ffca5b9902c9a6167c37ad835a83127b7ee8070c0b8436a68137df206c07d.png" alt="Delete a35ffca5b9902c9a6167c37ad835a83127b7ee8070c0b8436a68137df206c07d" />' +
       "</div>" +
     "</div>" +
-  "</div>")
+  "</div>");
 }
 
 function createClue(){
@@ -117,9 +117,9 @@ function createClue(){
     success: function(message){
       addClueToList(message, listId);
       $('form').trigger('reset');
-      $('#new-clue-address-form').html('<button id="toggle-address" class="btn btn-small btn-success">Let me fill in the address for the location of my clue.</button>')
-      $("#new-from-address-submit-button").hide()
-      $("#new-clue-form-submit-button").show()
+      $('#new-clue-address-form').html('<button id="toggle-address" class="btn btn-small btn-success">Let me fill in the address for the location of my clue.</button>');
+      $("#new-from-address-submit-button").hide();
+      $("#new-clue-form-submit-button").show();
     }
   });
 
