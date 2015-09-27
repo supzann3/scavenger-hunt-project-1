@@ -115,7 +115,7 @@ function createClue(){
     success: function(message){
       addClueToList(message, listId);
       $('form').trigger('reset');
-      $('#new-clue-address-form').html('<button id="toggle-address" class="btn btn-small btn-success">Let me fill in the address for the location of my clue.</button>')
+      $('#new-clue-address-form').html('<button id="toggle-address" class="btn btn-white btn-lg">Let me fill in the address for the location of my clue.</button>')
       $("#new-from-address-submit-button").hide()
       $("#new-clue-form-submit-button").show()
     }
