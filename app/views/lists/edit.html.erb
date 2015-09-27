@@ -13,8 +13,8 @@
   <div id="edit-lists-form-wrapper" class="">
     <%= form_tag("/list/#{@list.id}", method: "post", id:"edit-lists-form") do %>
       <%= hidden_field_tag "list_id", "#{@list.id}" %>
-      <%= text_field_tag(:name, nil, value: @list.name) %><br>
-      <%= text_field_tag(:location, nil, value: @list.location) %><br>
+      <%= text_field_tag(:name, nil, value: @list.name) %>
+      <%= text_field_tag(:location, nil, value: @list.location) %>
       <%= submit_tag("Update", class: "btn btn-white btn-lg") %>
     <% end %>
   </div>
@@ -41,29 +41,21 @@
       <div class="">
         Use the form below to create a clue leading players to your current location.  We will draw your coordinates from your device.  You must be at the location of the answer to your clue.
       </div>
-      <p>
-        &nbsp;
-      </p>
+      <br> <br>
       <%= form_tag("lists/#{@list.id}/clues", method: "post", id:"new-clue-form") do %>
       <%= text_area_tag(:text, nil, placeholder: 'Your Question') %><br>
       <%= text_field_tag(:answer, nil, placeholder: 'Enter Answer') %><br>
       <%= hidden_field_tag "list_id", "#{@list.id}" %>
       <%= hidden_field_tag "longitude" %>
       <%= hidden_field_tag "latitude" %>
-      <p>
-        &nbsp;
-      </p>
+      <br>
     <div id="new-clue-address-form">
       <button id="toggle-address" class="btn btn-white btn-lg">Let me fill in the address for the location of my clue.</button><br>
     </div>
-    <p>
-      &nbsp;
-    </p>
+    <br> <br>
     <div id="submit-new-clue-form">
       <button id="new-clue-form-submit-button" class="btn btn-white btn-lg">Create my clue using my current coordinates.</button><br>
-      <p>
-        &nbsp;
-      </p>
+      <br> <br>
       <button id="new-from-address-submit-button" class="btn btn-white btn-lg">Create my clue!</button>
     </div>
     <% end %>

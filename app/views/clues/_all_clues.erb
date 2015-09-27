@@ -15,7 +15,9 @@
         Edit your clue using the form below.
         <%= form_tag("/list/#{@list.id}/clues", method: "post", class:"edit-clue-form") do %>
           <%= text_field_tag(:text, nil, value: clue.text) %><br>
+          <br>
           <%= text_field_tag(:answer, nil, value: clue.answer) %><br>
+          <br><br>
           <%= submit_tag("Update Clue", class: "btn btn-white btn-lg") %>
         <% end %>
       </div>
@@ -23,3 +25,4 @@
 
   <% end %>
 </div>
+<br>
