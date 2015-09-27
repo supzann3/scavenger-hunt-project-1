@@ -24,3 +24,5 @@
 //= require vegas/vegas.min
 //= require csoon
 //= require_tree .
+
+// $(".alert").slideUp(7000);
