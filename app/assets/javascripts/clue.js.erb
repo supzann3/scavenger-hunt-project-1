@@ -101,7 +101,7 @@ function createClue(){
       },
     success: function(message){
       // debugger
-      $('#all-clues').append(message)
+      $('#clue-list').append(message)
       $('form').trigger('reset');
       $('#new-clue-address-form').html('<button id="toggle-address" class="btn btn-small">Let me input an address.</button>')
       $("#new-from-address-submit-button").hide()
@@ -139,4 +139,3 @@ function editClue(clueId, listId, text, answer){
     }
   });
 }
-
