@@ -18,7 +18,6 @@
 //= require device.min
 //= require wow.min
 //= require smoothscroll
-//= require map
 //= require vegas/vegas.min
 //= require csoon
 //= require_tree .
