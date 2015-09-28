@@ -1,6 +1,6 @@
 <div id="all-clues">
   <% @list.clues.each do |clue| %>
-    <div class= "clue-wrapper panel panel-default col-lg-2" id= <%="clue-#{clue.id}" %>>
+    <div class= "clue-wrapper panel panel-default" id= <%="clue-#{clue.id}" %>>
       <div class="clue-info panel-heading">
         <div class="hidden clue-id"><%= "#{clue.id}" %></div>
         <div class="hidden list-id"><%= "#{clue.list.id}" %></div>
