@@ -17,9 +17,9 @@ class Clue < ActiveRecord::Base
 
   def location_valid?(user_location=nil)
     return true
-    # clue_location = [latitude, longitude]
-    # distance = Geocoder::Calculations.distance_between(user_location, clue_location) * 5280
-    # distance <= 65 ? true : false
+    clue_location = [latitude, longitude]
+    distance = Geocoder::Calculations.distance_between(user_location, clue_location) * 5280
+    distance <= 65 ? true : false
   end
 
   def answer_valid?(user_answer)
